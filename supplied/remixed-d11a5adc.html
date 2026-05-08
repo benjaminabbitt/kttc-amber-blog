@@ -1,0 +1,1357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Chicago — Labor Day 2026</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #0d2137;
+  --navy-mid: #163352;
+  --navy-light: #1e4470;
+  --lake: #2070b0;
+  --lake-light: #4a9fd4;
+  --lake-pale: #d6eaf8;
+  --gold: #c8913a;
+  --gold-light: #e4b96a;
+  --gold-pale: #fdf3e3;
+  --brick: #8b3a2f;
+  --brick-light: #bf5447;
+  --sand: #f0e8d8;
+  --sand-mid: #e4d8c4;
+  --cream: #faf8f4;
+  --text: #1a1a18;
+  --text-mid: #444;
+  --text-light: #777;
+  --border: #d8d0c0;
+  --border-light: #ece6da;
+  --warn-bg: #fef8ec;
+  --warn-border: #e4b056;
+  --warn-text: #6b4400;
+  --success-bg: #eaf5f0;
+  --success-border: #4caf50;
+  --success-text: #1a6e38;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 13px;
+  background: var(--cream);
+  color: var(--text);
+  line-height: 1.55;
+}
+
+/* ── HERO ── */
+.hero {
+  background: var(--navy);
+  padding: 32px 20px 28px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background:
+    radial-gradient(ellipse 70% 60% at 85% 110%, rgba(32,112,176,0.28) 0%, transparent 60%),
+    radial-gradient(ellipse 50% 40% at 10% -10%, rgba(200,145,58,0.15) 0%, transparent 60%);
+  pointer-events: none;
+}
+.hero-inner { position: relative; max-width: 680px; margin: 0 auto; }
+.hero-kicker {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 8px;
+}
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 5vw, 38px);
+  font-weight: 900;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 10px;
+}
+.hero h1 span { color: var(--gold-light); }
+.hero-sub {
+  font-size: 12px;
+  color: rgba(255,255,255,0.62);
+  margin-bottom: 20px;
+  max-width: 480px;
+}
+.hero-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+.pill {
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 11px;
+  border-radius: 20px;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.pill-drive { background: rgba(32,112,176,0.22); color: var(--lake-light); border: 1px solid rgba(74,159,212,0.3); }
+.pill-free  { background: rgba(76,175,80,0.18); color: #6ecf72; border: 1px solid rgba(110,207,114,0.3); }
+.pill-stamp { background: rgba(200,145,58,0.2); color: var(--gold-light); border: 1px solid rgba(228,185,106,0.35); }
+.pill-park  { background: rgba(139,58,47,0.22); color: #e8847a; border: 1px solid rgba(191,84,71,0.3); }
+
+/* ── STAT STRIP ── */
+.stats {
+  background: var(--navy-mid);
+  border-top: 1px solid rgba(255,255,255,0.07);
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 100%;
+}
+.stat-item {
+  flex: 1;
+  min-width: 80px;
+  padding: 10px 14px;
+  border-right: 1px solid rgba(255,255,255,0.07);
+  text-align: center;
+}
+.stat-item:last-child { border-right: none; }
+.stat-n {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--gold-light);
+  line-height: 1;
+  margin-bottom: 3px;
+}
+.stat-l {
+  font-size: 9px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  color: rgba(255,255,255,0.45);
+}
+
+/* ── MAIN CONTENT ── */
+.content {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+
+/* ── SECTION HEADERS ── */
+.section-label {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: .14em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin: 24px 0 10px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--border);
+}
+
+/* ── TRIP OVERVIEW CARDS ── */
+.overview-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 8px;
+  margin-bottom: 8px;
+}
+.overview-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 12px 14px;
+}
+.ov-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--text-light);
+  margin-bottom: 4px;
+}
+.ov-val {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+  line-height: 1.35;
+}
+.ov-val .accent { color: var(--lake); }
+
+/* ── DAY CARDS ── */
+.day-card {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 10px;
+  overflow: hidden;
+  transition: box-shadow .18s;
+}
+.day-card:hover { box-shadow: 0 3px 18px rgba(13,33,55,0.08); }
+
+.day-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 13px 15px;
+  cursor: pointer;
+  user-select: none;
+  background: var(--cream);
+  border-bottom: 1px solid transparent;
+  transition: background .15s;
+}
+.day-header:hover { background: var(--sand); }
+.day-header.open { background: var(--navy); border-bottom-color: rgba(255,255,255,0.1); }
+
+.day-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--border);
+  line-height: 1;
+  min-width: 26px;
+  transition: color .15s;
+}
+.day-header.open .day-num { color: rgba(255,255,255,0.25); }
+
+.day-meta { flex: 1; }
+.day-date {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--text-light);
+  margin-bottom: 2px;
+  transition: color .15s;
+}
+.day-header.open .day-date { color: var(--gold-light); }
+.day-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  transition: color .15s;
+}
+.day-header.open .day-title { color: #fff; }
+.day-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+  margin-top: 6px;
+}
+.chip {
+  font-size: 10px;
+  font-weight: 500;
+  padding: 2px 8px;
+  border-radius: 10px;
+}
+.chip-nps  { background: #e6f1fb; color: #185fa5; }
+.chip-food { background: var(--gold-pale); color: #7a5200; }
+.chip-wl   { background: #f0e8ff; color: #6b3fa0; }
+.chip-park { background: #fde8e6; color: var(--brick); }
+.chip-ev   { background: #e8f5e9; color: #1b6b37; }
+.chip-hotel{ background: #f3f0ff; color: #4a3590; }
+
+.day-toggle {
+  font-size: 11px;
+  color: var(--border);
+  transition: transform .2s, color .15s;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+.day-header.open .day-toggle { transform: rotate(180deg); color: rgba(255,255,255,0.4); }
+
+.day-body {
+  display: none;
+  padding: 16px 16px 18px;
+  border-top: 1px solid var(--border-light);
+}
+.day-body.open { display: block; }
+
+/* ── TIMELINE ── */
+.timeline { margin-bottom: 16px; }
+.tl-item {
+  display: grid;
+  grid-template-columns: 62px 1fr;
+  gap: 0 12px;
+  position: relative;
+  padding-bottom: 14px;
+}
+.tl-item:last-child { padding-bottom: 0; }
+.tl-item::before {
+  content: '';
+  position: absolute;
+  left: 61px;
+  top: 20px;
+  bottom: 0;
+  width: 1px;
+  background: var(--border-light);
+}
+.tl-item:last-child::before { display: none; }
+
+.tl-time {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--lake);
+  text-align: right;
+  padding-top: 1px;
+  flex-shrink: 0;
+}
+.tl-dot {
+  position: absolute;
+  left: 56px;
+  top: 4px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--lake-light);
+  z-index: 1;
+}
+.tl-dot.gold  { border-color: var(--gold); }
+.tl-dot.brick { border-color: var(--brick-light); }
+.tl-dot.green { border-color: #4caf50; }
+.tl-dot.navy  { border-color: var(--navy-light); background: var(--navy-light); }
+
+.tl-content { padding-top: 0; }
+.tl-title {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--navy);
+  margin-bottom: 3px;
+  line-height: 1.25;
+}
+.tl-title .badge {
+  display: inline-block;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 1px 6px;
+  border-radius: 4px;
+  margin-left: 5px;
+  vertical-align: middle;
+}
+.badge-nps   { background: var(--lake-pale); color: var(--lake); }
+.badge-food  { background: var(--gold-pale); color: var(--gold); }
+.badge-wl    { background: #ede0fe; color: #6b3fa0; }
+.badge-ev    { background: #e8f5e9; color: #1b6b37; }
+.badge-park  { background: #fde8e6; color: var(--brick); }
+.badge-hotel { background: #f3f0ff; color: #4a3590; }
+
+.tl-body {
+  font-size: 12px;
+  color: var(--text-mid);
+  line-height: 1.6;
+  margin-bottom: 5px;
+}
+.tl-body p { margin-bottom: 5px; }
+.tl-body p:last-child { margin-bottom: 0; }
+.tl-body strong { color: var(--text); font-weight: 600; }
+
+.tl-meta {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-top: 3px;
+}
+.tl-meta a { color: var(--lake); text-decoration: none; }
+
+/* ── ALERT BOXES ── */
+.alert {
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 11.5px;
+  line-height: 1.55;
+  margin: 10px 0 4px;
+  display: flex;
+  gap: 8px;
+  align-items: flex-start;
+}
+.alert-icon { flex-shrink: 0; font-size: 13px; margin-top: 0px; }
+.alert-warn { background: var(--warn-bg); border: 1px solid var(--warn-border); color: var(--warn-text); }
+.alert-info { background: var(--lake-pale); border: 1px solid rgba(32,112,176,0.25); color: #0d3b6b; }
+.alert-success { background: var(--success-bg); border: 1px solid var(--success-border); color: var(--success-text); }
+
+/* ── SECTION DIVIDERS INSIDE BODY ── */
+.body-section {
+  margin: 14px 0 6px;
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .12em;
+  color: var(--text-light);
+  border-bottom: 1px solid var(--border-light);
+  padding-bottom: 4px;
+}
+
+/* ── RESTAURANT CARD ── */
+.rest-card {
+  background: var(--gold-pale);
+  border: 1px solid #e8d4ab;
+  border-radius: 9px;
+  padding: 10px 13px;
+  margin: 8px 0;
+}
+.rest-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--navy);
+  margin-bottom: 2px;
+}
+.rest-meta {
+  font-size: 11px;
+  color: var(--text-light);
+  margin-bottom: 6px;
+}
+.rest-meta span { margin-right: 10px; }
+.rest-stars { color: var(--gold); font-weight: 700; }
+.rest-order {
+  font-size: 11.5px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+.rest-order strong { color: var(--text); }
+
+/* ── NPS STAMP CARD ── */
+.stamp-card {
+  background: var(--lake-pale);
+  border: 1px solid rgba(32,112,176,0.25);
+  border-radius: 9px;
+  padding: 10px 13px;
+  margin: 8px 0;
+}
+.stamp-name {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--navy);
+  margin-bottom: 3px;
+}
+.stamp-meta {
+  font-size: 11px;
+  color: #2a5e8a;
+  margin-bottom: 6px;
+}
+.stamp-activity {
+  font-size: 11.5px;
+  color: var(--text-mid);
+  line-height: 1.6;
+}
+.stamp-activity strong { color: var(--text); }
+
+/* ── WORLD'S LARGEST CARD ── */
+.wl-card {
+  background: #f8f0ff;
+  border: 1px solid #d8b8ff;
+  border-radius: 9px;
+  padding: 9px 13px;
+  margin: 6px 0;
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+}
+.wl-icon { font-size: 18px; flex-shrink: 0; }
+.wl-name {
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--navy);
+}
+.wl-address { font-size: 11px; color: var(--text-light); margin-top: 1px; }
+
+/* ── EV CARD ── */
+.ev-card {
+  background: #edf7ef;
+  border: 1px solid #a8d5b0;
+  border-radius: 9px;
+  padding: 10px 13px;
+  margin: 8px 0;
+}
+.ev-name { font-weight: 700; font-size: 12px; color: #1b5e36; margin-bottom: 2px; }
+.ev-meta { font-size: 11px; color: #2d7a4a; line-height: 1.5; }
+
+/* ── HOTEL CARD ── */
+.hotel-card {
+  background: #f5f2ff;
+  border: 1px solid #c9bff0;
+  border-radius: 9px;
+  padding: 10px 13px;
+  margin: 8px 0;
+}
+.hotel-name { font-weight: 700; font-size: 12px; color: #3a2b8c; margin-bottom: 2px; }
+.hotel-meta { font-size: 11px; color: #5244a0; line-height: 1.5; }
+
+/* ── PRE-TRIP CHECKLIST ── */
+.checklist {
+  background: white;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+.checklist-hdr {
+  background: var(--navy);
+  color: white;
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .05em;
+  text-transform: uppercase;
+}
+.check-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 9px 14px;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 12px;
+}
+.check-item:last-child { border-bottom: none; }
+.check-box {
+  width: 16px;
+  height: 16px;
+  border: 1.5px solid var(--border);
+  border-radius: 4px;
+  flex-shrink: 0;
+  margin-top: 1px;
+  cursor: pointer;
+}
+.check-box.urgent {
+  border-color: var(--brick-light);
+  background: #fde8e6;
+}
+.check-main { flex: 1; }
+.check-action {
+  font-weight: 600;
+  color: var(--text);
+  margin-bottom: 1px;
+}
+.check-detail { font-size: 11px; color: var(--text-light); }
+.check-urgency {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .08em;
+  padding: 2px 6px;
+  border-radius: 4px;
+  flex-shrink: 0;
+  align-self: flex-start;
+  margin-top: 1px;
+}
+.urg-asap { background: #fde8e6; color: var(--brick); }
+.urg-week { background: var(--warn-bg); color: #7a4800; }
+
+/* ── STAMP SUMMARY ── */
+.stamp-summary {
+  background: var(--navy);
+  border-radius: 12px;
+  padding: 16px;
+  margin-bottom: 10px;
+  color: white;
+}
+.ss-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: var(--gold-light);
+}
+.ss-item {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  padding: 6px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.07);
+  font-size: 12px;
+}
+.ss-item:last-child { border-bottom: none; }
+.ss-num {
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 15px;
+  color: var(--gold-light);
+  min-width: 20px;
+  line-height: 1.2;
+}
+.ss-park { flex: 1; }
+.ss-name { font-weight: 600; color: rgba(255,255,255,0.95); }
+.ss-loc { font-size: 11px; color: rgba(255,255,255,0.45); margin-top: 1px; }
+.ss-day { font-size: 10px; font-weight: 600; background: rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); padding: 2px 8px; border-radius: 8px; align-self: center; white-space: nowrap; }
+
+/* ── FOOD SUMMARY ── */
+.food-row {
+  display: grid;
+  grid-template-columns: 70px 1fr;
+  gap: 6px;
+  align-items: start;
+  padding: 7px 0;
+  border-bottom: 1px solid var(--border-light);
+  font-size: 12px;
+}
+.food-row:last-child { border-bottom: none; }
+.food-meal {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .09em;
+  color: var(--text-light);
+  padding-top: 1px;
+}
+.food-name { font-weight: 600; color: var(--navy); }
+.food-type { font-size: 11px; color: var(--text-light); }
+
+/* ── MISC ── */
+.note-box {
+  background: var(--sand);
+  border: 1px solid var(--sand-mid);
+  border-radius: 8px;
+  padding: 9px 12px;
+  font-size: 11.5px;
+  color: var(--text-mid);
+  margin: 8px 0;
+  line-height: 1.6;
+}
+
+@media (max-width: 480px) {
+  .overview-grid { grid-template-columns: 1fr; }
+  .stats { flex-wrap: wrap; }
+  .stat-item { min-width: 50%; border-bottom: 1px solid rgba(255,255,255,0.07); }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-inner">
+    <div class="hero-kicker">Labor Day Weekend · September 4–7, 2026</div>
+    <h1>Chicago &amp;<br><span>Central Illinois</span></h1>
+    <p class="hero-sub">Civil rights history · Polish culture · Indiana dunes · Springfield horseshoe · Six Flags 50th anniversary · 5 NPS stamps</p>
+    <div class="hero-pills">
+      <span class="pill pill-drive">🚗 Drive</span>
+      <span class="pill pill-free">0 PTO Used</span>
+      <span class="pill pill-stamp">5 NPS Stamps</span>
+      <span class="pill pill-park">🎢 Six Flags 50th</span>
+    </div>
+  </div>
+</div>
+
+<!-- STAT STRIP -->
+<div class="stats">
+  <div class="stat-item"><div class="stat-n">5</div><div class="stat-l">NPS Stamps</div></div>
+  <div class="stat-item"><div class="stat-n">0</div><div class="stat-l">PTO Days</div></div>
+  <div class="stat-item"><div class="stat-n">4</div><div class="stat-l">🗿 World's Largest</div></div>
+  <div class="stat-item"><div class="stat-n">~985</div><div class="stat-l">Total Miles</div></div>
+  <div class="stat-item"><div class="stat-n">2</div><div class="stat-l">Hotels</div></div>
+</div>
+
+<div class="content">
+
+  <!-- OVERVIEW -->
+  <div class="section-label">Trip Overview</div>
+  <div class="overview-grid">
+    <div class="overview-card">
+      <div class="ov-label">Depart</div>
+      <div class="ov-val">Fri Sep 4 · <span class="accent">~5:00 PM</span><br>Kirkwood, MO</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-label">Return</div>
+      <div class="ov-val">Mon Sep 7 · <span class="accent">~5:00 PM</span><br>Kirkwood, MO</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-label">Hotels</div>
+      <div class="ov-val">Hilton Garden Inn Addison (Fri–Sun)<br>Tru Merrillville (Sun–Mon)</div>
+    </div>
+    <div class="overview-card">
+      <div class="ov-label">Vehicle</div>
+      <div class="ov-val">Tesla Model 3 LR<br><span class="accent">Supercharger: Pontiac, IL</span></div>
+    </div>
+  </div>
+
+  <!-- STAMP SUMMARY -->
+  <div class="section-label">NPS Passport Stamps</div>
+  <div class="stamp-summary">
+    <div class="ss-title">5 Stamps · 0 PTO</div>
+    <div class="ss-item">
+      <div class="ss-num">1</div>
+      <div class="ss-park">
+        <div class="ss-name">Pullman NHP</div>
+        <div class="ss-loc">610 E 111th St, Chicago, IL · 9AM–5PM daily</div>
+      </div>
+      <div class="ss-day">Saturday</div>
+    </div>
+    <div class="ss-item">
+      <div class="ss-num">2</div>
+      <div class="ss-park">
+        <div class="ss-name">Emmett Till &amp; Mamie Till-Mobley NM</div>
+        <div class="ss-loc">Stamp at Pullman NHP VC · same visit</div>
+      </div>
+      <div class="ss-day">Saturday</div>
+    </div>
+    <div class="ss-item">
+      <div class="ss-num">3</div>
+      <div class="ss-park">
+        <div class="ss-name">Indiana Dunes NP</div>
+        <div class="ss-loc">1215 N SR-49, Porter, IN · 8AM–6PM (last summer hours day)</div>
+      </div>
+      <div class="ss-day">Monday</div>
+    </div>
+    <div class="ss-item">
+      <div class="ss-num">4</div>
+      <div class="ss-park">
+        <div class="ss-name">Lincoln Home NHS</div>
+        <div class="ss-loc">426 S 7th St, Springfield, IL · 9AM–5PM daily</div>
+      </div>
+      <div class="ss-day">Monday</div>
+    </div>
+    <div class="ss-item">
+      <div class="ss-num">5</div>
+      <div class="ss-park">
+        <div class="ss-name">Springfield 1908 Race Riot NM</div>
+        <div class="ss-loc">Stamp dispensed at Lincoln Home NHS VC · same visit</div>
+      </div>
+      <div class="ss-day">Monday</div>
+    </div>
+  </div>
+
+  <!-- DAY CARDS -->
+  <div class="section-label">Day by Day</div>
+
+  <!-- FRIDAY -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">01</div>
+      <div class="day-meta">
+        <div class="day-date">Friday · September 4</div>
+        <div class="day-title">Drive to Chicago</div>
+        <div class="day-chips">
+          <span class="chip chip-ev">⚡ Pontiac Supercharger</span>
+          <span class="chip chip-hotel">🏨 Hilton Garden Inn Addison</span>
+        </div>
+      </div>
+      <div class="day-toggle">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+        <div class="tl-item">
+          <div class="tl-time">5:00 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Depart Kirkwood → I-55 North</div>
+            <div class="tl-body"><p>Hit the highway after work. Total drive is ~295 miles. The Pontiac Supercharger at the ~130 mile mark splits the trip perfectly.</p></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">7:00 PM</div>
+          <div class="tl-dot green"></div>
+          <div class="tl-content">
+            <div class="tl-title">Pontiac, IL Supercharger <span class="badge badge-ev">EV</span></div>
+            <div class="tl-body"><p>Battery arrives ~30–35%. Charge to 85% (~20–25 min). Wally's is a full convenience stop — snacks, restrooms, stretch break.</p></div>
+            <div class="ev-card">
+              <div class="ev-name">⚡ Wally's Pontiac · I-55 Exit 197</div>
+              <div class="ev-meta">8 stalls · 250kW max · NACS · 24/7 · Pontiac, IL 61764</div>
+            </div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">7:30 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Depart Pontiac → Addison (~95 mi)</div>
+            <div class="tl-body"><p>Battery departs ~85%. Arrives Addison ~60–65% — comfortable margin with no range anxiety.</p></div>
+          </div>
+        </div>
+        <div class="tl-item">
+          <div class="tl-time">9:00 PM</div>
+          <div class="tl-dot navy"></div>
+          <div class="tl-content">
+            <div class="tl-title">Arrive · Hilton Garden Inn Addison <span class="badge badge-hotel">HOTEL</span></div>
+            <div class="tl-body"><p>Plug into on-site Tesla destination charger (2 Tesla ports + 1 J1772, all free) for full overnight charge. Pavilion Pantry is open 24 hrs for late snacks.</p></div>
+            <div class="hotel-card">
+              <div class="hotel-name">Hilton Garden Inn Addison · Fri–Sun check-in</div>
+              <div class="hotel-meta">551 N Swift Rd, Addison, IL 60101 · (630) 691-0500<br>EV charging on-site (2 Tesla dest. + 1 J1772 · free) · Indoor pool · Garden Grille restaurant</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Pre-trip:</strong> Call (630) 691-0500 to verify EV charger operational status — destination chargers can be unreliable.</span></div>
+          </div>
+        </div>
+      </div>
+      <div class="note-box">Total miles: ~295 · Drive time: ~4.5 hrs · Arrival: ~9 PM — well within comfort range. No dinner needed; Pavilion Pantry handles any late cravings.</div>
+    </div>
+  </div>
+
+  <!-- SATURDAY -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">02</div>
+      <div class="day-meta">
+        <div class="day-date">Saturday · September 5</div>
+        <div class="day-title">Civil Rights History + Polish Culture + Fogo</div>
+        <div class="day-chips">
+          <span class="chip chip-nps">🏛 Pullman NHP</span>
+          <span class="chip chip-nps">🏛 Emmett Till NM</span>
+          <span class="chip chip-wl">🗿 ×3 World's Largest</span>
+          <span class="chip chip-food">🥩 Fogo de Chão</span>
+        </div>
+      </div>
+      <div class="day-toggle">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-time">7:00 AM</div>
+          <div class="tl-dot gold"></div>
+          <div class="tl-content">
+            <div class="tl-title">Breakfast · Stray Hen Cafe <span class="badge badge-food">BREAKFAST</span></div>
+            <div class="rest-card">
+              <div class="rest-name">Stray Hen Cafe — Elmhurst</div>
+              <div class="rest-meta">
+                <span>105 S York St, Elmhurst, IL 60126</span>
+                <span>(630) 447-9908</span>
+                <span class="rest-stars">★ 4.6</span>
+                <span>7AM–3PM daily</span>
+              </div>
+              <div class="rest-order">Chef-driven neighborhood café; creative ingredient-forward breakfast. On route toward Chicago south side — zero backtracking.<br><strong>Order:</strong> O'Brian or Papi Chulo skillet, chilaquiles, apple churro French toast, cinnamon roll pancakes. Homemade hollandaise is a standout. Arrive at 7AM — line forms by 10AM on weekends.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">8:30 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Drive to Chicago south side (~35 min)</div>
+            <div class="tl-body"><p>I-290 E → Dan Ryan S → I-94 S to Exit 63B (111th St).</p></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">9:05 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Pullman NHP + Emmett Till &amp; Mamie Till-Mobley NM <span class="badge badge-nps">2 STAMPS</span></div>
+            <div class="stamp-card">
+              <div class="stamp-name">Pullman National Historical Park</div>
+              <div class="stamp-meta">610 E 111th St, Chicago, IL 60628 · (773) 928-7257 · 9AM–5PM daily · Free</div>
+              <div class="stamp-activity">The Pullman Administration Clock Tower Building houses both stamps. Exhibits cover labor rights, the Brotherhood of Sleeping Car Porters, immigration, and civil rights. Watch the ranger-narrated film, then walk the Pullman historic neighborhood — the most intact 19th-century planned industrial town in America. The Florence Hotel and Market Hall building are architecturally remarkable.<br><br><strong>Emmett Till NM connection:</strong> Roberts Temple Church of God in Christ at 4021 S State St (Bronzeville, ~15 min north) is the Chicago site — where the open-casket funeral that changed America was held in 1955. Stamp handled at Pullman VC. Respect the private property of the church.</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Pre-trip:</strong> Call (773) 928-7257 to confirm VC is staffed. Past ranger shortages caused unannounced closures.</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:30 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Resurrection Catholic Cemetery &amp; Mausoleum</div>
+            <div class="tl-body">
+              <p><strong>World's Largest Stained Glass Window</strong> — 40 feet high, wrapping entirely around the 1969 Resurrection Mausoleum building. Nearly 23,000 sq ft across 2,400 panels depicting the History of Man's Salvation. Walk the exterior first, then enter the building.</p>
+              <p>Also: home of <strong>Resurrection Mary</strong>, Chicago's most enduring ghost legend — a young blond woman in white has reportedly hitchhiked on Archer Avenue since the 1930s, vanishing when cars reach the cemetery gate.</p>
+            </div>
+            <div class="hotel-card" style="background:#f9f5ff;border-color:#c9bff0;">
+              <div class="hotel-name" style="color:#3a2b8c;">Resurrection Catholic Cemetery &amp; Mausoleum</div>
+              <div class="hotel-meta" style="color:#5244a0;">7201 Archer Rd, Justice, IL 60458 · (708) 458-4770<br>Grounds: 9AM–6PM (Mar–Oct) ✅ · Office: Mon–Fri 8:30AM–4PM, Sat 9AM–1PM</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Pre-trip:</strong> Call (708) 458-4770 to confirm mausoleum building access on Sat Sep 5.</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:00 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Big Chief Cigar Store Indian <span class="badge badge-wl">🗿 WORLD'S LARGEST</span></div>
+            <div class="wl-card">
+              <div class="wl-icon">🗿</div>
+              <div>
+                <div class="wl-name">World's Largest Cigar Store Indian — Big Chief</div>
+                <div class="wl-address">9341 S Cicero Ave, Oak Lawn, IL · ~2 mi from Resurrection · 10 min stop</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:15 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Drive to Smakosz (~35 min via I-290 N)</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:50 PM</div>
+          <div class="tl-dot gold"></div>
+          <div class="tl-content">
+            <div class="tl-title">Lunch · Smakosz Restaurant <span class="badge badge-food">POLISH LUNCH</span></div>
+            <div class="rest-card">
+              <div class="rest-name">Smakosz Restaurant — Jefferson Park, Chicago</div>
+              <div class="rest-meta">
+                <span>5619 W Lawrence Ave, Chicago, IL 60630</span>
+                <span>(773) 205-1771</span>
+                <span class="rest-stars">★ 4.6</span>
+                <span>Sat 12PM–8PM</span>
+              </div>
+              <div class="rest-order">Second-generation family restaurant since 1985; family recipes, some ingredients from own garden. Classic Eastern European atmosphere — dark wood, warm, feels like grandma's house.<br><strong>Order:</strong> Polish Sampler platter (ideal for first visit), pierogies (request pan-fried with grilled onions and bacon), stuffed cabbage rolls, baked pork knuckle (crispy skin, standout), red borscht, Hungarian pancake (potato pancakes with goulash + sour cream), beef tartare.<br><strong>Avoid:</strong> Chicken meatballs — weakest item per recent reviews. Order generously — portions skew smaller.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">2:15 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">World's Largest Bronze Gorilla <span class="badge badge-wl">🗿 WORLD'S LARGEST</span></div>
+            <div class="wl-card">
+              <div class="wl-icon">🦍</div>
+              <div>
+                <div class="wl-name">World's Largest Bronze Gorilla — Brookfield Zoo</div>
+                <div class="wl-address">8400 W 31st St, Brookfield, IL · ~25 min from Smakosz · Photo stop outside zoo entrance</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">3:00 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">World's Largest Laundromat <span class="badge badge-wl">🗿 WORLD'S LARGEST</span></div>
+            <div class="wl-card">
+              <div class="wl-icon">👕</div>
+              <div>
+                <div class="wl-name">World's Largest Laundromat — Berwyn's Best Coin Laundry</div>
+                <div class="wl-address">6246 Cermak Rd, Berwyn, IL · ~3 mi from Brookfield · 10 min photo stop</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">3:15 PM</div>
+          <div class="tl-dot navy"></div>
+          <div class="tl-content">
+            <div class="tl-title">Return to Hotel (~25 min)</div>
+            <div class="tl-body"><p>Freshen up, indoor pool, rest before dinner. Garden Grille at hotel serves snacks if needed.</p></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">6:30 PM</div>
+          <div class="tl-dot gold"></div>
+          <div class="tl-content">
+            <div class="tl-title">Dinner · Fogo de Chão Rosemont <span class="badge badge-food">BRAZILIAN STEAKHOUSE</span></div>
+            <div class="rest-card">
+              <div class="rest-name">Fogo de Chão — Rosemont</div>
+              <div class="rest-meta">
+                <span>5460 Park Pl, Rosemont, IL 60018</span>
+                <span>(847) 678-7200</span>
+                <span class="rest-stars">★ 4.4</span>
+                <span>Sat until 10:30PM</span>
+              </div>
+              <div class="rest-order">Gaucho chefs carve tableside continuously — green disc to continue, red to pause. Free parking in Parkway Bank Park Garage.<br><strong>Order:</strong> Picanha (house specialty top sirloin), Fraldinha (bottom sirloin), Filet Mignon wrapped in bacon, Linguiça sausage. Load the white Carrara marble Market Table first. Butter-bathed lobster tail is an upcharge worth considering. Papaya Cream for dessert — the classic Brazilian finish. Honor can direct the gauchos herself.<br><strong>Budget:</strong> ~$60–70/adult · Allow 1.5–2 hrs</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Book NOW:</strong> Labor Day Saturday fills weeks in advance. Reserve at fogodechao.com or call (847) 678-7200. Target 6:30 PM.</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">~8:30 PM</div>
+          <div class="tl-dot navy"></div>
+          <div class="tl-content">
+            <div class="tl-title">Return to Hotel</div>
+            <div class="tl-body"><p>Plug Tesla into destination charger overnight. Full battery needed for tomorrow's drive north to Gurnee.</p></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="note-box">Saturday driving: ~75 miles total in Chicago area. Full hotel charge overnight. All outdoor World's Largest stops accessible anytime.</div>
+    </div>
+  </div>
+
+  <!-- SUNDAY -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">03</div>
+      <div class="day-meta">
+        <div class="day-date">Sunday · September 6</div>
+        <div class="day-title">Mexican Breakfast + Six Flags 50th Anniversary</div>
+        <div class="day-chips">
+          <span class="chip chip-food">🌮 Avocado Express</span>
+          <span class="chip chip-park">🎢 Six Flags Great America</span>
+          <span class="chip chip-hotel">🏨 Tru Merrillville</span>
+        </div>
+      </div>
+      <div class="day-toggle">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-time">7:30 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Depart Addison → Waukegan (~45 min via I-290 E / I-94 N)</div>
+            <div class="tl-body"><p>Waukegan is 15 min north of Six Flags on the same I-94 corridor — arriving here on the way to the park adds almost no extra driving.</p></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">8:15 AM</div>
+          <div class="tl-dot gold"></div>
+          <div class="tl-content">
+            <div class="tl-title">Breakfast · Avocado Express <span class="badge badge-food">MEXICAN BREAKFAST</span></div>
+            <div class="rest-card">
+              <div class="rest-name">Avocado Express — Waukegan</div>
+              <div class="rest-meta">
+                <span>2632 Washington St, Waukegan, IL 60085</span>
+                <span>(847) 782-0794</span>
+                <span class="rest-stars">★ 4.4</span>
+                <span>Sun 8AM–2PM</span>
+              </div>
+              <div class="rest-order">Family-owned counter-service café; unassuming exterior, fiercely loyal following. Authentic Mexican breakfast with homemade salsas. Arrive at 8AM opening to guarantee seats; out by 9:15AM.<br><strong>Order:</strong> Chilaquiles with steak in green sauce (house signature — homemade salsa verde, two eggs any style, beans), huevos divorciados with carne asada, prime rib tacos with guajillo sauce, fresh-squeezed OJ, licuado smoothie. For Honor: breakfast burrito or egg quesadilla.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">9:15 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Drive to Six Flags Gurnee (~15 min south on I-94)</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 AM</div>
+          <div class="tl-dot brick"></div>
+          <div class="tl-content">
+            <div class="tl-title">Six Flags Great America — 50th Anniversary Season <span class="badge badge-park">FULL DAY</span></div>
+            <div class="tl-body">
+              <p><strong>1 Great America Pkwy, Gurnee, IL 60031</strong> — Open through Labor Day weekend ✅</p>
+              <p>2026 marks Six Flags Great America's <strong>50th anniversary</strong> — the park opened April 25, 1976. Expect a legacy museum, anniversary brick program, 50th-anniversary merchandise, and special entertainment. This is a genuinely special year to visit.</p>
+              <p><strong>First-hour priority rides (hit before lines build):</strong> Goliath (wooden coaster, world records), Maxx Force (launched, 0-78 mph), Superman: Ultimate Flight, Raging Bull (hyper coaster, 54" req.), American Eagle (classic 1981 racer).</p>
+              <p><strong>For Honor:</strong> Bugs Bunny National Park (dedicated kids' area), Rue Le Dodge (bumper cars), Whirligig, Yankee Clipper (log flume). Goliath requires 48"; Maxx Force and Raging Bull require 54" — verify Honor's height before the trip.</p>
+              <p><strong>Flash Pass strongly recommended</strong> on Labor Day weekend — one of the busiest days of the season. Flash Pass Gold cuts waits to near-zero. Buy at sixflags.com/greatamerica.</p>
+              <p><strong>Food:</strong> Lunch and dinner inside the park. Avoid the main food court. Better bets: churros from street vendors, craft beer garden (adults), chicken tenders near Goliath. Funnel cake is mandatory.</p>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Pre-trip:</strong> Buy tickets and Flash Pass at sixflags.com/greatamerica — 2–4 weeks ahead. Verify Honor's height vs. ride requirements.</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">~9:00 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Depart Six Flags → Tru by Hilton Merrillville (~45 min)</div>
+            <div class="tl-body"><p>I-94 S → I-65 S into Indiana. Late arrival after a full park day — this is expected and fine.</p></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">~9:45 PM</div>
+          <div class="tl-dot navy"></div>
+          <div class="tl-content">
+            <div class="tl-title">Arrive · Tru by Hilton Merrillville <span class="badge badge-hotel">HOTEL</span></div>
+            <div class="hotel-card">
+              <div class="hotel-name">Tru by Hilton Merrillville · Sun–Mon check-in</div>
+              <div class="hotel-meta">8410 Indiana St, Merrillville, IN 46410 · (219) 472-6934<br>EV charging on-site · Free hot breakfast · Heated indoor pool · I-65 / US-30</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Pre-trip:</strong> Call (219) 472-6934 to verify EV charger type and operational status. Monday is a 310-mile drive — full overnight charge is critical. Backup: Portage, IN Tesla Supercharger (~10 min away).</span></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="note-box">Sunday driving: ~80 miles total. Battery: full from Addison overnight charge → arrives Merrillville ~85%+ after ~80 miles. Monday requires ~310 miles — overnight charge essential.</div>
+    </div>
+  </div>
+
+  <!-- MONDAY -->
+  <div class="day-card">
+    <div class="day-header" onclick="toggleDay(this)">
+      <div class="day-num">04</div>
+      <div class="day-meta">
+        <div class="day-date">Monday · September 7 — Labor Day</div>
+        <div class="day-title">Indiana Dunes + Springfield + Home</div>
+        <div class="day-chips">
+          <span class="chip chip-nps">🏛 Indiana Dunes NP</span>
+          <span class="chip chip-nps">🏛 Lincoln Home NHS</span>
+          <span class="chip chip-nps">🏛 Race Riot NM</span>
+          <span class="chip chip-wl">🗿 ×2 World's Largest</span>
+          <span class="chip chip-food">🥞 Charlie Parker's Horseshoe</span>
+        </div>
+      </div>
+      <div class="day-toggle">▼</div>
+    </div>
+    <div class="day-body">
+      <div class="timeline">
+
+        <div class="tl-item">
+          <div class="tl-time">7:30 AM</div>
+          <div class="tl-dot gold"></div>
+          <div class="tl-content">
+            <div class="tl-title">Breakfast · Cafe Stelio's <span class="badge badge-food">BREAKFAST</span></div>
+            <div class="rest-card">
+              <div class="rest-name">Cafe Stelio's — Merrillville</div>
+              <div class="rest-meta">
+                <span>7454 Broadway, Merrillville, IN 46410</span>
+                <span>(219) 525-4266</span>
+                <span class="rest-stars">★ 4.5</span>
+                <span>Normally Tue–Sun 8AM–3PM</span>
+              </div>
+              <div class="rest-order">Independent Greek-American breakfast; organic cage-free eggs, house-made specialty pancakes, fresh-squeezed juice. Coffee is widely cited as best in NWI.<br><strong>Order:</strong> Berry Cheesecake Pancakes or Atomic Pancakes, Shrimp & Grits, Belgian waffle, Oreo S'more Pancakes for Honor. The sausage and bacon are consistently outstanding.<br><strong>Backup if closed:</strong> Grand Park Cafe & Pizza, Merrillville · (219) 942-9600 · locally owned, open daily</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Closed Mondays normally — MUST call ahead to verify Labor Day hours:</strong> (219) 525-4266</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">8:30 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Drive to Indiana Dunes NP (~20 min via I-65 N / SR-49 N)</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">8:50 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Indiana Dunes National Park <span class="badge badge-nps">STAMP</span></div>
+            <div class="stamp-card">
+              <div class="stamp-name">Indiana Dunes NP — Visitor Center</div>
+              <div class="stamp-meta">1215 N SR-49, Porter, IN 46304 · (219) 926-2255 · 8AM–6PM (last day of summer hours) ✅</div>
+              <div class="stamp-activity"><strong>Park activity — Mount Baldy Trail:</strong> A 126-foot "living dune" that migrates ~4 feet per year northward, burying trees as it moves. The 0.6-mile trail climbs to the summit with sweeping Lake Michigan views — Chicago skyline faintly visible to the northwest on clear days. The buried "ghost forest" of trees at the base is eerie and beautiful. Free timed-entry pass may be required — check at VC desk for same-day availability.<br><br><strong>Alternative if Baldy is full:</strong> Cowles Bog Trail (4.7 mi loop) or a quick West Beach walk for a Lake Michigan view. Budget 1–1.5 hrs total.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">10:00 AM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">⚠️ Depart Indiana Dunes — Critical Timing</div>
+            <div class="tl-body"><p>Must depart by <strong>10:00 AM</strong> to arrive Charlie Parker's Diner by 1:30 PM (closes 2:00 PM). Drive is ~155 mi to Lincoln, then ~45 min more to Springfield.</p></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:30 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">World's Largest Rail Splitter Covered Wagon <span class="badge badge-wl">🗿 WORLD'S LARGEST</span></div>
+            <div class="wl-card">
+              <div class="wl-icon">🐎</div>
+              <div>
+                <div class="wl-name">World's Largest Rail Splitter Covered Wagon + Big Lincoln</div>
+                <div class="wl-address">Lincoln Depot area, 101 N Chicago St, Lincoln, IL · ~10 min photo stop<br>Note: Only city named for Lincoln before he became president, christened with watermelon juice</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">12:45 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">World's Largest Square Knot <span class="badge badge-wl">🗿 WORLD'S LARGEST</span></div>
+            <div class="wl-card">
+              <div class="wl-icon">🪢</div>
+              <div>
+                <div class="wl-name">World's Largest Square Knot</div>
+                <div class="wl-address">17237 N 1775 East Rd, Hudson, IL · ~10 mi NE of Bloomington off I-55 · 10 min photo stop</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">~1:30 PM</div>
+          <div class="tl-dot gold"></div>
+          <div class="tl-content">
+            <div class="tl-title">⚠️ Lunch · Charlie Parker's Diner <span class="badge badge-food">SPRINGFIELD HORSESHOE</span></div>
+            <div class="rest-card">
+              <div class="rest-name">Charlie Parker's Diner — Springfield</div>
+              <div class="rest-meta">
+                <span>700 N St, Springfield, IL 62704</span>
+                <span>(217) 241-2104</span>
+                <span class="rest-stars">★ 4.6</span>
+                <span>Mon–Sun 7AM–2PM ⚠️ ARRIVE BY 1:30</span>
+              </div>
+              <div class="rest-order">Springfield landmark since 1991 in a WWII Quonset hut. Featured on Food Network Diners, Drive-ins and Dives. 80% of orders are horseshoes.<br><strong>The Springfield Horseshoe:</strong> Two thick slices of Texas Toast, your choice of meat, buried in fries or tater tots, drowned in house-made Welsh rarebit cheese sauce. Request half cheese/half sausage gravy for the classic hybrid. Breakfast Horseshoe (eggs + meat + tater tots + cheese) is the Charlie Parker's signature.<br><strong>Also order:</strong> The 16" pancake (arrives on a pizza-size plate — a genuine spectacle). Pony shoe = half-size version for Honor.</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Closes 2PM sharp.</strong> Arrive no later than 1:30 PM and order immediately. Call ahead if running late: (217) 241-2104.</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">2:15 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Lincoln Home NHS + Springfield 1908 Race Riot NM <span class="badge badge-nps">2 STAMPS</span></div>
+            <div class="stamp-card">
+              <div class="stamp-name">Lincoln Home National Historic Site</div>
+              <div class="stamp-meta">426 S 7th St, Springfield, IL 62701 · (217) 391-3221 · 9AM–5PM daily ✅ · Free</div>
+              <div class="stamp-activity">Both stamps dispensed here — Lincoln Home NHS and Springfield 1908 Race Riot NM. Free timed-entry tickets for the Lincoln Home guided tour at VC desk — take the tour if tickets are available (30–40 min): the only home Lincoln ever owned, furnished as it appeared in 1860.<br><br>The surrounding four-block Lincoln Historic Neighborhood is open to walk freely — Dean House, Arnold House, and Corneau House exhibits open 9AM–4:30PM. One of the most intact 19th-century residential urban blocks in America.<br><br><strong>Race Riot NM:</strong> The monument preserves foundations of five homes destroyed in the 1908 attacks at 9th and 11th / Madison St. The founding of the NAACP grew from national outrage over this event — one year later, in 1909.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">3:15 PM</div>
+          <div class="tl-dot green"></div>
+          <div class="tl-content">
+            <div class="tl-title">Springfield Supercharger (Recommended) <span class="badge badge-ev">EV</span></div>
+            <div class="ev-card">
+              <div class="ev-name">⚡ Haymaker's Bar &amp; Grill Supercharger</div>
+              <div class="ev-meta">1700 W Jefferson St, Springfield, IL · ~1 mile from Lincoln Home<br>Battery arrives Springfield ~35–40% after ~185 miles. Springfield → Kirkwood is ~100 miles — that's tight at 35%. A 15-min charge here brings you to ~65–70%, arriving home above 20% comfortably.</div>
+            </div>
+            <div class="alert alert-warn"><span class="alert-icon">⚠️</span><span><strong>Pre-trip:</strong> Verify operational status on PlugShare or Tesla app before departure.</span></div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">3:30 PM</div>
+          <div class="tl-dot"></div>
+          <div class="tl-content">
+            <div class="tl-title">Depart Springfield → Kirkwood (~1.5 hrs via I-55 S / I-270 W)</div>
+          </div>
+        </div>
+
+        <div class="tl-item">
+          <div class="tl-time">~5:00 PM</div>
+          <div class="tl-dot navy"></div>
+          <div class="tl-content">
+            <div class="tl-title">Home · Kirkwood, MO ✅</div>
+            <div class="tl-body"><p>Trip complete. 5 stamps, 0 PTO.</p></div>
+          </div>
+        </div>
+
+      </div>
+      <div class="note-box">Monday total: ~310 miles driving. Full Merrillville overnight charge critical. Springfield Supercharger recommended before final 100-mile leg home.</div>
+    </div>
+  </div>
+
+  <!-- FOOD SUMMARY -->
+  <div class="section-label">Food Plan</div>
+  <div class="overview-card" style="margin-bottom:10px;">
+    <div class="food-row"><div class="food-meal">Fri Dinner</div><div><div class="food-name">Hotel Pavilion Pantry</div><div class="food-type">24-hr at Hilton Garden Inn Addison · arrive ~9PM</div></div></div>
+    <div class="food-row"><div class="food-meal">Sat Bkfst</div><div><div class="food-name">Stray Hen Cafe — Elmhurst</div><div class="food-type">Chef-driven breakfast · 4.6★ · Elmhurst, IL</div></div></div>
+    <div class="food-row"><div class="food-meal">Sat Lunch</div><div><div class="food-name">Smakosz Restaurant — Jefferson Park</div><div class="food-type">Authentic Polish · 4.6★ · Chicago, IL</div></div></div>
+    <div class="food-row"><div class="food-meal">Sat Dinner</div><div><div class="food-name">Fogo de Chão — Rosemont ⭐</div><div class="food-type">Brazilian churrasco · 4.4★ · Rosemont, IL · RESERVE NOW</div></div></div>
+    <div class="food-row"><div class="food-meal">Sun Bkfst</div><div><div class="food-name">Avocado Express — Waukegan</div><div class="food-type">Authentic Mexican breakfast · 4.4★ · Waukegan, IL</div></div></div>
+    <div class="food-row"><div class="food-meal">Sun L+D</div><div><div class="food-name">🎢 Six Flags Great America</div><div class="food-type">Lunch + dinner inside the park</div></div></div>
+    <div class="food-row"><div class="food-meal">Mon Bkfst</div><div><div class="food-name">Cafe Stelio's — Merrillville</div><div class="food-type">Greek-American breakfast · 4.5★ · Merrillville, IN · ⚠️ Verify Labor Day hrs</div></div></div>
+    <div class="food-row" style="border:none;"><div class="food-meal">Mon Lunch</div><div><div class="food-name">Charlie Parker's Diner — Springfield ⭐</div><div class="food-type">Springfield Horseshoe · 4.6★ · Food Network DDD · Arrive by 1:30PM</div></div></div>
+  </div>
+
+  <!-- PRE-TRIP CHECKLIST -->
+  <div class="section-label">Pre-Trip Action Checklist</div>
+  <div class="checklist">
+    <div class="checklist-hdr">⚡ Actions Required Before Trip</div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-main">
+        <div class="check-action">Book Fogo de Chão Rosemont reservation — Sat Sep 5, 6:30 PM</div>
+        <div class="check-detail">fogodechao.com or (847) 678-7200 · Labor Day weekend fills weeks ahead</div>
+      </div>
+      <div class="check-urgency urg-asap">ASAP</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box urgent"></div>
+      <div class="check-main">
+        <div class="check-action">Buy Six Flags tickets + Flash Pass (Labor Day weekend)</div>
+        <div class="check-detail">sixflags.com/greatamerica · Flash Pass Gold recommended for Labor Day</div>
+      </div>
+      <div class="check-urgency urg-asap">ASAP</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-main">
+        <div class="check-action">Call Pullman NHP to verify VC is staffed Sep 5</div>
+        <div class="check-detail">(773) 928-7257 · Past ranger shortages caused unannounced closures</div>
+      </div>
+      <div class="check-urgency urg-week">1 WK BEFORE</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-main">
+        <div class="check-action">Call Resurrection Cemetery to confirm mausoleum access Sat Sep 5</div>
+        <div class="check-detail">(708) 458-4770 · Confirm building hours on that specific Saturday</div>
+      </div>
+      <div class="check-urgency urg-week">1 WK BEFORE</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-main">
+        <div class="check-action">Call Cafe Stelio's to verify Labor Day Monday hours</div>
+        <div class="check-detail">(219) 525-4266 · Normally closed Mondays · Backup: Grand Park Cafe (219) 942-9600</div>
+      </div>
+      <div class="check-urgency urg-week">1 WK BEFORE</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-main">
+        <div class="check-action">Verify Hilton Garden Inn Addison EV charger operational</div>
+        <div class="check-detail">(630) 691-0500 · 2 Tesla destination + 1 J1772 on-site</div>
+      </div>
+      <div class="check-urgency urg-week">1 WK BEFORE</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-main">
+        <div class="check-action">Verify Tru Merrillville EV charger type and operational status</div>
+        <div class="check-detail">(219) 472-6934 · Full overnight charge required for Monday's 310-mile drive</div>
+      </div>
+      <div class="check-urgency urg-week">1 WK BEFORE</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-main">
+        <div class="check-action">Verify Springfield Supercharger (Haymaker's) operational</div>
+        <div class="check-detail">PlugShare or Tesla app · 1700 W Jefferson St, Springfield · critical for Mon return</div>
+      </div>
+      <div class="check-urgency urg-week">BEFORE DEPART</div>
+    </div>
+    <div class="check-item">
+      <div class="check-box"></div>
+      <div class="check-main">
+        <div class="check-action">Check Honor's height vs. Six Flags ride requirements</div>
+        <div class="check-detail">Goliath: 48" · Maxx Force + Raging Bull: 54" · American Eagle: 48"</div>
+      </div>
+      <div class="check-urgency urg-week">BEFORE TRIP</div>
+    </div>
+  </div>
+
+  <div style="text-align:center; color:var(--text-light); font-size:11px; margin-top:24px; padding-top:16px; border-top:1px solid var(--border);">
+    Chicago · Labor Day 2026 · 5 stamps · 0 PTO · 4 World's Largest · ~985 miles
+  </div>
+
+</div>
+
+<script>
+function toggleDay(header) {
+  const body = header.nextElementSibling;
+  const isOpen = header.classList.contains('open');
+  header.classList.toggle('open', !isOpen);
+  body.classList.toggle('open', !isOpen);
+}
+</script>
+
+</body>
+</html>

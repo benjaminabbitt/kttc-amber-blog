@@ -1,0 +1,1228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fort Donelson & Stones River — Aug 14–16, 2026</title>
+<style>
+:root {
+  --font-display: Georgia, 'Times New Roman', 'Hoefler Text', serif;
+  --font-body: 'Iowan Old Style', Palatino, 'Palatino Linotype', Georgia, serif;
+  --font-small-caps: 'Trajan Pro', 'Cinzel', Georgia, serif;
+  --parchment: #f4ead5;
+  --parchment-dark: #e8d8b8;
+  --ink: #1c1208;
+  --ink-soft: #3a2e1e;
+  --rust: #8b3319;
+  --rust-light: #c4572d;
+  --gold: #9a7520;
+  --gold-light: #c9a040;
+  --gold-pale: #e8d090;
+  --navy: #1a2a3a;
+  --navy-mid: #2c4055;
+  --navy-light: #3d566e;
+  --olive: #5a6640;
+  --olive-light: #7a8c58;
+  --olive-pale: #d4dcb8;
+  --tan: #c0a070;
+  --tan-light: #dcc898;
+  --cream: #faf6ec;
+  --shadow: rgba(28,18,8,0.18);
+  --shadow-soft: rgba(28,18,8,0.08);
+}
+
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: var(--font-body);
+  background: var(--parchment);
+  color: var(--ink);
+  line-height: 1.75;
+  font-size: 15px;
+}
+
+/* ── GRAIN TEXTURE OVERLAY ─────────────────── */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='1'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* ── HERO ──────────────────────────────────── */
+.hero {
+  background: var(--navy);
+  color: var(--parchment);
+  padding: 64px 32px 56px;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse 80% 60% at 50% 100%, rgba(154,117,32,0.12) 0%, transparent 70%),
+    repeating-linear-gradient(0deg, transparent, transparent 48px, rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px),
+    repeating-linear-gradient(90deg, transparent, transparent 48px, rgba(255,255,255,0.015) 48px, rgba(255,255,255,0.015) 49px);
+}
+.hero-ornament {
+  font-family: var(--font-small-caps);
+  font-size: 10px;
+  letter-spacing: 5px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  opacity: 0.7;
+  margin-bottom: 20px;
+  position: relative;
+}
+.hero-ornament::before,
+.hero-ornament::after {
+  content: '─────';
+  opacity: 0.4;
+  margin: 0 12px;
+}
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: clamp(30px, 5.5vw, 62px);
+  font-weight: 900;
+  line-height: 1.05;
+  color: var(--parchment);
+  position: relative;
+  margin-bottom: 10px;
+  letter-spacing: -0.5px;
+}
+.hero h1 em {
+  font-style: italic;
+  color: var(--gold-light);
+}
+.hero-sub {
+  font-family: var(--font-body);
+  font-size: 14px;
+  color: var(--tan-light);
+  position: relative;
+  margin-bottom: 32px;
+  font-style: italic;
+}
+.hero-badges {
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  flex-wrap: wrap;
+  position: relative;
+}
+.badge {
+  font-family: var(--font-small-caps);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  padding: 5px 14px;
+  border: 1px solid;
+  border-radius: 1px;
+}
+.badge-gold   { color: var(--gold-light); border-color: rgba(201,160,64,0.4); background: rgba(154,117,32,0.15); }
+.badge-green  { color: #a8c880; border-color: rgba(122,140,88,0.4); background: rgba(90,102,64,0.2); }
+.badge-navy   { color: #9ab8cc; border-color: rgba(61,86,110,0.5); background: rgba(44,64,85,0.3); }
+.badge-rust   { color: #e0907a; border-color: rgba(139,51,25,0.4); background: rgba(139,51,25,0.2); }
+
+/* ── NAV ───────────────────────────────────── */
+.sticky-nav {
+  background: var(--navy);
+  border-top: 1px solid rgba(201,160,64,0.2);
+  border-bottom: 2px solid var(--gold);
+  display: flex;
+  justify-content: center;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.sticky-nav::-webkit-scrollbar { display: none; }
+.sticky-nav a {
+  font-family: var(--font-small-caps);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  color: var(--tan-light);
+  text-decoration: none;
+  padding: 14px 20px;
+  border-right: 1px solid rgba(255,255,255,0.06);
+  white-space: nowrap;
+  transition: background 0.2s, color 0.2s;
+  flex-shrink: 0;
+}
+.sticky-nav a:hover { background: rgba(201,160,64,0.12); color: var(--gold-light); }
+
+/* ── SUMMARY BAR ───────────────────────────── */
+.summary-bar {
+  background: var(--navy-mid);
+  color: var(--parchment);
+  padding: 22px 24px;
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  border-bottom: 2px solid var(--gold);
+}
+.sum-item {
+  text-align: center;
+  padding: 0 28px;
+  border-right: 1px solid rgba(255,255,255,0.1);
+}
+.sum-item:last-child { border-right: none; }
+.sum-label {
+  font-family: var(--font-small-caps);
+  font-size: 8px;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  display: block;
+  margin-bottom: 3px;
+  opacity: 0.8;
+}
+.sum-value {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--parchment);
+}
+.sum-value.green { color: #a8c880; }
+
+/* ── MAIN LAYOUT ───────────────────────────── */
+.main-wrap { max-width: 900px; margin: 0 auto; padding: 0 20px; }
+
+/* ── DAY SECTIONS ──────────────────────────── */
+.day-section {
+  padding: 52px 0 36px;
+  border-bottom: 1px solid var(--parchment-dark);
+}
+.day-section:last-of-type { border-bottom: none; }
+
+.day-masthead {
+  display: flex;
+  align-items: stretch;
+  gap: 0;
+  margin-bottom: 36px;
+  border: 1px solid var(--tan);
+  overflow: hidden;
+  box-shadow: 4px 4px 0 var(--shadow-soft);
+}
+.day-num-block {
+  background: var(--navy);
+  color: var(--gold-light);
+  font-family: var(--font-display);
+  font-size: 72px;
+  font-weight: 900;
+  line-height: 1;
+  padding: 16px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  min-width: 90px;
+}
+.day-info-block {
+  background: var(--cream);
+  padding: 16px 24px;
+  flex: 1;
+  border-left: 3px solid var(--gold);
+}
+.day-tag {
+  font-family: var(--font-small-caps);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 3px;
+  text-transform: uppercase;
+  color: var(--rust);
+  margin-bottom: 5px;
+}
+.day-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: var(--navy);
+  line-height: 1.2;
+  margin-bottom: 5px;
+}
+.day-meta {
+  font-size: 12.5px;
+  color: var(--ink-soft);
+  font-style: italic;
+}
+
+/* ── TIMELINE ──────────────────────────────── */
+.timeline {
+  position: relative;
+  padding-left: 36px;
+}
+.timeline::before {
+  content: '';
+  position: absolute;
+  left: 10px;
+  top: 6px;
+  bottom: 6px;
+  width: 1px;
+  background: linear-gradient(to bottom, var(--tan), var(--parchment-dark) 90%, transparent);
+}
+
+.tl-entry {
+  position: relative;
+  margin-bottom: 30px;
+}
+.tl-entry:last-child { margin-bottom: 0; }
+
+/* dot */
+.tl-entry::before {
+  content: '';
+  position: absolute;
+  left: -29px;
+  top: 8px;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  background: var(--tan);
+  border: 2px solid var(--parchment);
+  box-shadow: 0 0 0 1px var(--tan);
+}
+.tl-entry.park::before  { background: var(--navy);  box-shadow: 0 0 0 1px var(--navy); }
+.tl-entry.meal::before  { background: var(--gold);  box-shadow: 0 0 0 1px var(--gold); }
+.tl-entry.drive::before { background: var(--olive); box-shadow: 0 0 0 1px var(--olive); }
+.tl-entry.charge::before{ background: #3aad6e;     box-shadow: 0 0 0 1px #3aad6e; }
+.tl-entry.fun::before   { background: var(--rust);  box-shadow: 0 0 0 1px var(--rust); }
+.tl-entry.brew::before  { background: var(--gold-light); box-shadow: 0 0 0 1px var(--gold-light); }
+
+.tl-time {
+  font-family: var(--font-small-caps);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--olive-light);
+  margin-bottom: 3px;
+}
+.tl-heading {
+  font-family: var(--font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 8px;
+  line-height: 1.3;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.pill {
+  font-family: var(--font-small-caps);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  padding: 2px 8px;
+  border-radius: 1px;
+}
+.pill-nps   { background: var(--navy); color: #9ab8cc; }
+.pill-meal  { background: #2a1a06; color: var(--gold-pale); }
+.pill-drive { background: var(--olive); color: #e0e8cc; }
+.pill-charge{ background: #0d2a1a; color: #7ee0a8; }
+.pill-fun   { background: var(--rust); color: #f8d0c0; }
+.pill-brew  { background: #2a1a06; color: var(--gold-pale); }
+
+.tl-body {
+  font-size: 14.5px;
+  color: var(--ink-soft);
+  line-height: 1.78;
+}
+.tl-body p + p { margin-top: 10px; }
+.tl-body strong { color: var(--ink); font-weight: 600; }
+
+/* ── INFO CARDS ────────────────────────────── */
+.info-card {
+  background: var(--cream);
+  border: 1px solid var(--tan-light);
+  border-left: 3px solid var(--rust);
+  padding: 13px 16px;
+  margin-top: 12px;
+  font-size: 13px;
+}
+.info-card.navy  { border-left-color: var(--navy); }
+.info-card.gold  { border-left-color: var(--gold); }
+.info-card.olive { border-left-color: var(--olive); }
+.info-card.green { border-left-color: #3aad6e; }
+.info-card.brew  { border-left-color: var(--gold-light); }
+
+.ic-row {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 5px;
+  align-items: baseline;
+  line-height: 1.5;
+}
+.ic-row:last-child { margin-bottom: 0; }
+.ic-key {
+  font-family: var(--font-small-caps);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--rust);
+  flex-shrink: 0;
+  width: 64px;
+  padding-top: 2px;
+}
+.info-card.navy  .ic-key { color: var(--navy-light); }
+.info-card.gold  .ic-key { color: var(--gold); }
+.info-card.olive .ic-key { color: var(--olive-light); }
+.info-card.green .ic-key { color: #27a060; }
+.info-card.brew  .ic-key { color: var(--gold-light); }
+
+/* ── WARNING ───────────────────────────────── */
+.warn {
+  background: #fef5e0;
+  border: 1px solid var(--gold-pale);
+  padding: 11px 15px;
+  margin-top: 12px;
+  font-size: 13px;
+  color: #5a3c08;
+  display: flex;
+  gap: 10px;
+}
+.warn-i { flex-shrink: 0; }
+
+/* ── DISHES ────────────────────────────────── */
+.dishes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 10px;
+}
+.dish {
+  font-size: 11.5px;
+  font-style: italic;
+  color: var(--rust);
+  background: rgba(139,51,25,0.07);
+  border: 1px solid rgba(139,51,25,0.2);
+  padding: 2px 10px;
+  border-radius: 10px;
+}
+
+/* ── SECTION DIVIDER ───────────────────────── */
+.section-rule {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin: 40px 0 32px;
+  color: var(--tan);
+}
+.section-rule span {
+  font-family: var(--font-small-caps);
+  font-size: 9px;
+  letter-spacing: 4px;
+  text-transform: uppercase;
+  white-space: nowrap;
+  color: var(--gold);
+}
+.section-rule::before,
+.section-rule::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--tan);
+}
+
+/* ── REFERENCE TABLES ──────────────────────── */
+.ref-section {
+  padding: 48px 0 40px;
+  border-top: 2px solid var(--parchment-dark);
+}
+.ref-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--navy);
+  margin-bottom: 6px;
+}
+.ref-sub {
+  font-size: 13px;
+  font-style: italic;
+  color: var(--ink-soft);
+  margin-bottom: 24px;
+}
+
+.ref-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 13.5px;
+  border: 1px solid var(--tan-light);
+  overflow: hidden;
+}
+.ref-table th {
+  background: var(--navy);
+  color: var(--gold-light);
+  font-family: var(--font-small-caps);
+  font-size: 8px;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 11px 14px;
+  text-align: left;
+  font-weight: 600;
+}
+.ref-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--parchment-dark);
+  vertical-align: top;
+  color: var(--ink-soft);
+  line-height: 1.6;
+}
+.ref-table tr:nth-child(even) td { background: rgba(196,168,130,0.07); }
+.ref-table tr:last-child td { border-bottom: none; }
+.ref-table .day-col { color: var(--rust); font-family: var(--font-small-caps); font-size: 10px; font-weight: 600; letter-spacing: 1px; white-space: nowrap; }
+.ref-table .name-col { color: var(--navy); font-weight: 600; font-family: var(--font-body); }
+.ref-table .rating { color: var(--gold); font-weight: 600; }
+
+/* ── EV SECTION ────────────────────────────── */
+.ev-section {
+  background: var(--navy);
+  color: var(--parchment);
+  padding: 48px 24px;
+  border-top: 3px solid #3aad6e;
+}
+.ev-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  font-weight: 700;
+  color: #7ee0a8;
+  margin-bottom: 6px;
+  text-align: center;
+}
+.ev-sub {
+  font-size: 13px;
+  color: var(--tan-light);
+  font-style: italic;
+  text-align: center;
+  margin-bottom: 28px;
+}
+.ev-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 14px;
+}
+.ev-card {
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(58,173,110,0.25);
+  padding: 16px 18px;
+}
+.ev-card-title {
+  font-family: var(--font-small-caps);
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #7ee0a8;
+  margin-bottom: 8px;
+}
+.ev-card p { font-size: 13px; color: #b0d8c0; line-height: 1.65; }
+.ev-card strong { color: #d0f0e0; }
+
+/* ── CHECKLIST ─────────────────────────────── */
+.checklist-section {
+  background: var(--navy-mid);
+  padding: 48px 24px;
+  border-top: 1px solid rgba(201,160,64,0.2);
+}
+.checklist-title {
+  font-family: var(--font-display);
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--gold-light);
+  text-align: center;
+  margin-bottom: 8px;
+}
+.checklist-sub {
+  text-align: center;
+  font-size: 13px;
+  font-style: italic;
+  color: var(--tan-light);
+  margin-bottom: 28px;
+}
+.checklist-grid {
+  max-width: 860px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 10px;
+}
+.check-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(201,160,64,0.15);
+  padding: 12px 14px;
+  font-size: 13px;
+  color: var(--tan-light);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+.check-item:hover { background: rgba(201,160,64,0.08); }
+.check-item input {
+  margin-top: 2px;
+  accent-color: var(--gold-light);
+  flex-shrink: 0;
+  cursor: pointer;
+}
+.check-label strong { color: var(--gold-light); }
+.check-label { line-height: 1.55; }
+
+/* ── FOOTER ────────────────────────────────── */
+footer {
+  background: var(--ink);
+  color: rgba(196,160,112,0.5);
+  text-align: center;
+  padding: 22px;
+  font-family: var(--font-small-caps);
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+/* ── ANIMATIONS ────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(14px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+.tl-entry { animation: fadeUp 0.45s ease both; }
+.tl-entry:nth-child(1) { animation-delay: 0.05s; }
+.tl-entry:nth-child(2) { animation-delay: 0.10s; }
+.tl-entry:nth-child(3) { animation-delay: 0.15s; }
+.tl-entry:nth-child(4) { animation-delay: 0.20s; }
+.tl-entry:nth-child(5) { animation-delay: 0.25s; }
+.tl-entry:nth-child(6) { animation-delay: 0.30s; }
+.tl-entry:nth-child(7) { animation-delay: 0.35s; }
+.tl-entry:nth-child(8) { animation-delay: 0.40s; }
+.tl-entry:nth-child(9) { animation-delay: 0.45s; }
+
+@media (max-width: 620px) {
+  .day-num-block { font-size: 52px; min-width: 70px; padding: 12px 16px; }
+  .day-title { font-size: 18px; }
+  .summary-bar { flex-wrap: wrap; gap: 12px; }
+  .sum-item { border-right: none; padding: 0 16px; }
+  .sticky-nav a { padding: 12px 14px; font-size: 8px; }
+}
+</style>
+</head>
+<body>
+
+<!-- ══ HERO ══════════════════════════════════ -->
+<header class="hero">
+  <div class="hero-ornament">NPS Passport · Tennessee Civil War</div>
+  <h1><em>Fort Donelson</em><br>&amp; Stones River</h1>
+  <p class="hero-sub">August 14–16, 2026 · Kirkwood → Nashville → Dover → Murfreesboro → Home</p>
+  <div class="hero-badges">
+    <span class="badge badge-gold">2 NPS Stamps</span>
+    <span class="badge badge-green">0 PTO Used</span>
+    <span class="badge badge-navy">Hilton Nashville DT · 2 Nights</span>
+    <span class="badge badge-rust">🗿 World's Largest Cedar Bucket</span>
+  </div>
+</header>
+
+<!-- ══ NAV ═══════════════════════════════════ -->
+<nav class="sticky-nav">
+  <a href="#day1">Fri · Drive Day</a>
+  <a href="#day2">Sat · Fort Donelson</a>
+  <a href="#day3">Sun · Stones River</a>
+  <a href="#food-ref">Food Plan</a>
+  <a href="#ev-ref">EV Charging</a>
+  <a href="#checklist">Pre-Trip</a>
+</nav>
+
+<!-- ══ SUMMARY BAR ════════════════════════════ -->
+<div class="summary-bar">
+  <div class="sum-item"><span class="sum-label">Dates</span><span class="sum-value">Aug 14–16, 2026</span></div>
+  <div class="sum-item"><span class="sum-label">PTO Used</span><span class="sum-value green">0 Days</span></div>
+  <div class="sum-item"><span class="sum-label">NPS Stamps</span><span class="sum-value">2</span></div>
+  <div class="sum-item"><span class="sum-label">Hotel</span><span class="sum-value" style="font-size:13px">Hilton Nashville DT</span></div>
+  <div class="sum-item"><span class="sum-label">Est. Miles</span><span class="sum-value">~740</span></div>
+  <div class="sum-item"><span class="sum-label">Charge Stops</span><span class="sum-value">2</span></div>
+</div>
+
+<div class="main-wrap">
+
+<!-- ══════════════════════════════════════════ -->
+<!-- DAY 1 -->
+<!-- ══════════════════════════════════════════ -->
+<section class="day-section" id="day1">
+  <div class="day-masthead">
+    <div class="day-num-block">1</div>
+    <div class="day-info-block">
+      <div class="day-tag">Friday, August 14 · Free — Drive Day</div>
+      <div class="day-title">Kirkwood → Nashville</div>
+      <div class="day-meta">~310 miles · 1 charge stop · Late dinner at Puckett's</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-entry drive">
+      <div class="tl-time">All Day</div>
+      <div class="tl-heading">Work Day — Kirkwood</div>
+      <div class="tl-body"><p>Normal work day at home. Weekday driving is a free remote day — no PTO used. Pack the car the night before.</p></div>
+    </div>
+
+    <div class="tl-entry drive">
+      <div class="tl-time">~5:30 PM</div>
+      <div class="tl-heading">Depart Kirkwood <span class="pill pill-drive">Drive</span></div>
+      <div class="tl-body">
+        <p>Head south on I-44 E. Route: I-44 → US-60 E through western Kentucky → US-79 S into Tennessee → I-24 E → Nashville. Approximately 310 miles, 4.5 hours driving. Depart at 100% charge.</p>
+        <p><strong>Before you leave:</strong> Watch the 17-minute Fort Donelson park film tonight at nps.gov/fodo/planyourvisit/things2do.htm. Also watch the Dover Hotel surrender film. Arriving educated makes the Saturday experience dramatically richer.</p>
+      </div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-time">~6:45 PM · Mile 85</div>
+      <div class="tl-heading">Buc-ee's Springfield, MO <span class="pill pill-drive">Snack Stop — Not a Charge Stop</span></div>
+      <div class="tl-body"><p>3284 N Beaver Rd, Springfield. Bathroom, stretch, Beaver Nuggets, brisket sandwiches, or whatever the family wants for road dinner. <strong>Do not charge here</strong> — too early in the trip. The 16 V4 Superchargers are here but your charge stop is Bowling Green, ~90 miles ahead.</p></div>
+    </div>
+
+    <div class="tl-entry charge">
+      <div class="tl-time">~9:00–9:25 PM · Mile 175</div>
+      <div class="tl-heading">⚡ Bowling Green, KY Supercharger <span class="pill pill-charge">Required Charge Stop</span></div>
+      <div class="tl-body"><p>Arrive ~40–45% battery. Charge to ~85%, approximately 20–25 minutes. Completes the drive to Nashville with comfortable margin.</p></div>
+      <div class="info-card green">
+        <div class="ic-row"><span class="ic-key">Location</span>3200 Scottsville Rd, Bowling Green, KY</div>
+        <div class="ic-row"><span class="ic-key">Arrive</span>~40–45% battery</div>
+        <div class="ic-row"><span class="ic-key">Depart</span>~85% battery · ~20–25 min charge</div>
+        <div class="ic-row"><span class="ic-key">Source</span>PlugShare — verify before departure</div>
+      </div>
+    </div>
+
+    <div class="tl-entry drive">
+      <div class="tl-time">~10:45–11:00 PM</div>
+      <div class="tl-heading">Check In — Hilton Nashville Downtown <span class="pill pill-drive">Hotel</span></div>
+      <div class="tl-body"><p>Arrive ~80% battery. Check in and plug into on-site Tesla Destination Connector. Only 4 total ports (2 Tesla + 2 J1772) — call ahead to confirm availability before the trip.</p></div>
+      <div class="info-card navy">
+        <div class="ic-row"><span class="ic-key">Hotel</span>Hilton Nashville Downtown</div>
+        <div class="ic-row"><span class="ic-key">Address</span>121 4th Ave S, Nashville, TN 37201</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 620-1000</div>
+        <div class="ic-row"><span class="ic-key">EV</span>2 Tesla + 2 J1772 on-site · guests only</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>9.2/10 · 1,689 reviews (U.S. News) · AAA 4-Diamond</div>
+      </div>
+      <div class="warn"><span class="warn-i">⚠️</span>Call ahead to reserve EV charging spot — only 4 ports total, high weekend demand.</div>
+    </div>
+
+    <div class="tl-entry meal">
+      <div class="tl-time">~11:15 PM</div>
+      <div class="tl-heading">Dinner — Puckett's Downtown <span class="pill pill-meal">Late Dinner</span></div>
+      <div class="tl-body"><p>3-minute walk from the hotel. Open Friday until 11 PM. Cherry wood-smoked BBQ, live music playing a few feet away, old general-store atmosphere. At this hour the crowd thins but the kitchen stays warm. Order the brisket or pulled pork. The skillet cinnamon roll is non-negotiable.</p></div>
+      <div class="info-card gold">
+        <div class="ic-row"><span class="ic-key">Address</span>500 Church St, Nashville, TN 37219</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 770-2772</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Mon–Thu 7 AM–10 PM · Fri–Sat 7 AM–11 PM · Sun 7 AM–10 PM</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>4.3 ★ · 3,695 reviews (Yelp) · Southern Living Top 5 TN</div>
+      </div>
+      <div class="dishes">
+        <span class="dish">Brisket</span>
+        <span class="dish">Pulled Pork</span>
+        <span class="dish">Skillet Cinnamon Roll ★</span>
+        <span class="dish">BBQ Taco Salad</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!-- DAY 2 -->
+<!-- ══════════════════════════════════════════ -->
+<section class="day-section" id="day2">
+  <div class="day-masthead">
+    <div class="day-num-block">2</div>
+    <div class="day-info-block">
+      <div class="day-tag">Saturday, August 15 · Free — Weekend</div>
+      <div class="day-title">Fort Donelson NB · Science Center · Fat Bottom Brewing</div>
+      <div class="day-meta">NPS Stamp #1 · Donelson Loop Trail · Dover Hotel · Adventure Science Center · Brewery Tour · Prince's Hot Chicken</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-entry meal">
+      <div class="tl-time">7:00 AM</div>
+      <div class="tl-heading">Breakfast — Biscuit Love (The Gulch) <span class="pill pill-meal">Breakfast</span></div>
+      <div class="tl-body">
+        <p>7-minute walk from the hotel. Arrive at opening — by 8:30 AM on a Saturday the line is long. The entire menu is built around the Southern biscuit as a composed format. The <strong>Bonut</strong> (fried biscuit dough + lemon mascarpone + blueberry compote) is mandatory for Honor. The <strong>East Nasty</strong> — fried chicken, white cheddar, honey on a biscuit — was named Bon Appétit's Best Sandwich in America in 2015. All ingredients locally sourced; ask about the farm suppliers on the menu board.</p>
+      </div>
+      <div class="info-card gold">
+        <div class="ic-row"><span class="ic-key">Address</span>316 11th Ave S, Nashville, TN 37203 (The Gulch)</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 490-9584</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Daily 7 AM–3 PM</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>4.4 ★ Google · 6,400+ reviews · OAD Cheap Eats #382 (2025)</div>
+        <div class="ic-row"><span class="ic-key">Walk</span>~7 minutes from Hilton Nashville DT</div>
+      </div>
+      <div class="dishes">
+        <span class="dish">Bonut ★</span>
+        <span class="dish">East Nasty</span>
+        <span class="dish">The Princess</span>
+        <span class="dish">Sawmill Gravy Biscuit</span>
+      </div>
+    </div>
+
+    <div class="tl-entry drive">
+      <div class="tl-time">~8:30 AM</div>
+      <div class="tl-heading">Drive — Nashville → Dover, TN <span class="pill pill-drive">~60 mi · ~1 hr</span></div>
+      <div class="tl-body"><p>US-79 W. Depart at ~100% from hotel overnight charge. No stop needed.</p></div>
+    </div>
+
+    <div class="tl-entry park">
+      <div class="tl-time">~9:30 AM</div>
+      <div class="tl-heading">Fort Donelson NB — Visitor Center <span class="pill pill-nps">NPS Stamp #1</span></div>
+      <div class="tl-body">
+        <p>The temporary VC is a double-wide trailer next to the original 1962 building (under renovation). Exhibits are limited, but the rangers are excellent. Spend 15 minutes with a ranger who will orient you to the battle sequence and auto tour stops. <strong>Get the cancellation stamp at the VC desk.</strong></p>
+      </div>
+      <div class="info-card navy">
+        <div class="ic-row"><span class="ic-key">Address</span>174 National Cemetery Dr, Dover, TN 37058</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(931) 232-5706</div>
+        <div class="ic-row"><span class="ic-key">VC Hours</span>Daily 8:30 AM–4:00 PM</div>
+        <div class="ic-row"><span class="ic-key">Fee</span>Free admission</div>
+      </div>
+    </div>
+
+    <div class="tl-entry park">
+      <div class="tl-time">~9:45 AM</div>
+      <div class="tl-heading">Donelson Loop Trail — 3.4 Miles <span class="pill pill-nps">Activity</span></div>
+      <div class="tl-body">
+        <p>The signature experience at this park. The orange-blazed loop follows hand-dug Confederate earthwork trenches along the bluffs, passes the Confederate river batteries where massive cannons overlook Lake Barkley (the view is stunning), continues through replica log huts at the original fort site, past the monument to fallen soldiers, and returns through hardwood forest over small creek bridges. Resident bald eagles have nested in the fort area — worth watching for. AllTrails 4.6 ★ from 467 reviews.</p>
+      </div>
+      <div class="info-card olive">
+        <div class="ic-row"><span class="ic-key">Trail</span>Donelson Loop · orange blazes · starts at VC parking</div>
+        <div class="ic-row"><span class="ic-key">Distance</span>3.4 miles loop</div>
+        <div class="ic-row"><span class="ic-key">Elevation</span>488 ft gain · rolling, not strenuous</div>
+        <div class="ic-row"><span class="ic-key">Time</span>~1.5–2 hours</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>AllTrails 4.6 ★ · 467 reviews</div>
+      </div>
+    </div>
+
+    <div class="tl-entry park">
+      <div class="tl-time">~11:45 AM</div>
+      <div class="tl-heading">Dover Hotel (Surrender House) + National Cemetery <span class="pill pill-nps">Historic Site</span></div>
+      <div class="tl-body">
+        <p>A 1.5-mile drive to 301 Petty St. This is where Confederate General Simon Buckner surrendered 14,000 troops to U.S. Grant on February 16, 1862 — the moment that made Grant a national hero and earned him the nickname "Unconditional Surrender" Grant. The exhibit room is open daily 10 AM–4 PM. The 1850s building is remarkably intact. The most historically charged 15 minutes at the park.</p>
+        <p>Immediately after, walk through <strong>Fort Donelson National Cemetery</strong> — over 650 Union soldiers buried here, with a historic carriage house. About 10 minutes.</p>
+      </div>
+      <div class="info-card navy">
+        <div class="ic-row"><span class="ic-key">Address</span>301 Petty St, Dover, TN (1.5 mi from VC)</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Daily 10 AM–4 PM · Free</div>
+      </div>
+    </div>
+
+    <div class="tl-entry meal">
+      <div class="tl-time">~12:15 PM</div>
+      <div class="tl-heading">Lunch — Midway Pizza (carry-out) <span class="pill pill-meal">Lunch</span></div>
+      <div class="tl-body">
+        <p>Call ahead ~30 minutes before arrival to order carry-out. Small veteran-owned shop named for the owner's Navy service aboard USS Midway CV-41. Carry-out only — one table, four counter seats. Take the food to the park picnic area adjacent to the VC parking lot for a battlefield picnic.</p>
+      </div>
+      <div class="info-card gold">
+        <div class="ic-row"><span class="ic-key">Address</span>961 Hwy 79, Dover, TN 37058</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(931) 472-9092 — call 30 min ahead</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Mon–Sat 11 AM–7 PM · Closed Sunday</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>4.7–5.0 ★ · TripAdvisor + Restaurant Guru (231 reviews)</div>
+        <div class="ic-row"><span class="ic-key">Note</span>Carry-out only · eat at park picnic area</div>
+      </div>
+      <div class="dishes">
+        <span class="dish">Jalapeño Popper Pizza ★</span>
+        <span class="dish">Chicken Fajita Pizza</span>
+        <span class="dish">Stuffed Cheesy Bread</span>
+        <span class="dish">Greek Salad</span>
+        <span class="dish">Chocolate Mousse Cheesecake</span>
+      </div>
+      <div class="warn"><span class="warn-i">⚠️</span>No dining room. Carry-out only. Park picnic area is right next to the VC parking lot.</div>
+    </div>
+
+    <div class="tl-entry drive">
+      <div class="tl-time">~1:30 PM</div>
+      <div class="tl-heading">Drive — Dover → Nashville <span class="pill pill-drive">~60 mi · ~1 hr</span></div>
+      <div class="tl-body"><p>US-79 E back to Nashville. Arrive hotel ~2:30 PM at ~70% battery — no charge needed. Hotel is en route to Adventure Science Center.</p></div>
+    </div>
+
+    <div class="tl-entry fun">
+      <div class="tl-time">~2:30 PM</div>
+      <div class="tl-heading">Adventure Science Center <span class="pill pill-fun">Honor's Pick</span></div>
+      <div class="tl-body">
+        <p>Nashville's premier hands-on science museum, 3 miles south of the hotel (~10-min drive). Four floors of interactive exhibits: walk on the moon simulator (harness lifts you to simulate lunar gravity), climb through the ventricles of a giant beating heart, augmented reality mirror showing your own muscles and bones, the 4-story Adventure Tower with a bicycle-powered elevator and a walk-on piano, and the 63-foot full-dome Sudekum Planetarium for full-dome shows. 175+ exhibits — budget 90 minutes minimum.</p>
+        <p><strong>Tip:</strong> Head to the upper floors first to beat crowds. The moon walk and Adventure Tower are the biggest hits for Honor's age group.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-row"><span class="ic-key">Address</span>800 Fort Negley Blvd, Nashville, TN 37203</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 862-5160</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Sat 9 AM–5 PM (closed Tue–Wed)</div>
+        <div class="ic-row"><span class="ic-key">Admission</span>Adults $22 · Ages 2–12 $18 · Under 2 free · Planetarium extra</div>
+        <div class="ic-row"><span class="ic-key">Parking</span>Free on-site</div>
+        <div class="ic-row"><span class="ic-key">Source</span>adventuresci.org · U.S. News Travel</div>
+      </div>
+    </div>
+
+    <div class="tl-entry brew">
+      <div class="tl-time">~4:00 PM · Drive ~12 min</div>
+      <div class="tl-heading">Fat Bottom Brewing — 4 PM Saturday Tour <span class="pill pill-brew">Brewery Tour</span></div>
+      <div class="tl-body">
+        <p>Nashville's original craft brewery (founded 2012, now in The Nations neighborhood). The Saturday tour runs at 3 PM and 4 PM — you're targeting the <strong>4 PM slot</strong>, which slots perfectly after Adventure Science Center. The 45-minute guided tour walks you through the full brewing operation, explains the process from grain to glass, and includes <strong>4 beer samples and a souvenir tasting glass</strong>. Tours sell out — book in advance at shop.fatbottombrewing.com.</p>
+        <p>After the tour, settle into the family-friendly beer garden: string lights, cornhole, craft beer flights. The Nashville Hot Chicken Sandwich here is genuinely excellent. Honor has full run of the outdoor space.</p>
+      </div>
+      <div class="info-card brew">
+        <div class="ic-row"><span class="ic-key">Address</span>800 44th Ave N, Nashville, TN 37209 (The Nations)</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 678-5895</div>
+        <div class="ic-row"><span class="ic-key">Tour</span>Saturdays 3 PM + 4 PM · $10/person · 45 min · 4 samples + souvenir glass</div>
+        <div class="ic-row"><span class="ic-key">Taproom</span>Sat 10 AM–10 PM · Family-friendly beer garden · Free parking</div>
+        <div class="ic-row"><span class="ic-key">Book</span>shop.fatbottombrewing.com — book in advance, tours sell out</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>4.3 ★ · TripAdvisor · Nashville Guru confirmed Jan 2026</div>
+      </div>
+      <div class="dishes">
+        <span class="dish">Ruby American Red Ale</span>
+        <span class="dish">Knockout IPA</span>
+        <span class="dish">Flight of 4 ★</span>
+        <span class="dish">Nashville Hot Chicken Sandwich</span>
+        <span class="dish">Pretzels + Beer Cheese</span>
+      </div>
+      <div class="warn"><span class="warn-i">⚠️</span>Book the 4 PM Saturday tour online in advance at shop.fatbottombrewing.com — once sold out, that slot is gone.</div>
+    </div>
+
+    <div class="tl-entry drive">
+      <div class="tl-time">~5:45 PM</div>
+      <div class="tl-heading">Drive — Fat Bottom → Downtown Nashville <span class="pill pill-drive">~15 min</span></div>
+      <div class="tl-body"><p>Back to the hotel to freshen up before dinner.</p></div>
+    </div>
+
+    <div class="tl-entry meal">
+      <div class="tl-time">~6:30 PM</div>
+      <div class="tl-heading">Dinner — Prince's Hot Chicken (Assembly Food Hall) <span class="pill pill-meal">Dinner</span></div>
+      <div class="tl-body">
+        <p>One block from the hotel inside Assembly Food Hall. Prince's is the 100-year-old originator of Nashville hot chicken — the scorned-lover origin story is genuine legend. Order at the counter, seat anywhere in the food hall. Heat levels: Plain → Mild → Medium → Hot → X-Hot. First-timers: <strong>Mild</strong> has real warmth without burning you. Hot will make you sweat through your shirt. Order tenders or a breast quarter with crinkle fries and coleslaw. No wait for a table — ideal with Honor after a full day.</p>
+      </div>
+      <div class="info-card gold">
+        <div class="ic-row"><span class="ic-key">Address</span>5055 Broadway (Assembly Food Hall), Nashville, TN</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(629) 895-4688</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Sun–Thu 10:30 AM–10 PM · Fri–Sat 10:30 AM–midnight</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>4.3 ★ TripAdvisor · The Infatuation Nashville</div>
+        <div class="ic-row"><span class="ic-key">Walk</span>~1 block from Hilton Nashville DT</div>
+      </div>
+      <div class="dishes">
+        <span class="dish">Hot Chicken Tenders ★</span>
+        <span class="dish">Breast Quarter</span>
+        <span class="dish">Crinkle Fries</span>
+        <span class="dish">Coleslaw</span>
+        <span class="dish">Start at Mild, work up</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!-- DAY 3 -->
+<!-- ══════════════════════════════════════════ -->
+<section class="day-section" id="day3">
+  <div class="day-masthead">
+    <div class="day-num-block">3</div>
+    <div class="day-info-block">
+      <div class="day-tag">Sunday, August 16 · Free — Weekend</div>
+      <div class="day-title">Stones River NB · Cedar Bucket · Drive Home</div>
+      <div class="day-meta">NPS Stamp #2 · Hazen Brigade Monument · Monell's · Joanie's · 🗿 World's Largest Cedar Bucket · Home ~7 PM</div>
+    </div>
+  </div>
+
+  <div class="timeline">
+
+    <div class="tl-entry meal">
+      <div class="tl-time">8:00 AM</div>
+      <div class="tl-heading">Breakfast — Monell's (Germantown) <span class="pill pill-meal">Breakfast</span></div>
+      <div class="tl-body">
+        <p>~10-minute drive from the hotel. <strong>No reservations — first come, first served.</strong> Arrive at 8:00 AM sharp to avoid a wait. Tables seat 8–12 communally — you share with strangers, which is entirely the point.</p>
+        <p>Monell's is Nashville's #1-rated restaurant, Top 100 in the USA. The Sunday country breakfast is served family-style: bowls arrive continuously and you pass to the left. Skillet fried chicken at every meal — yes, fried chicken for breakfast — plus scrambled eggs, hash browns, cheese grits, biscuits and sawmill gravy, cinnamon fried apples. Set price per person includes everything. Honor will be passing bowls to strangers within two minutes.</p>
+      </div>
+      <div class="info-card gold">
+        <div class="ic-row"><span class="ic-key">Address</span>1235 6th Ave N, Nashville, TN 37208 (Germantown)</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 248-4747</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Sun 8 AM–4 PM</div>
+        <div class="ic-row"><span class="ic-key">Note</span>No reservations · first-come, first-served · arrive at 8 AM sharp</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>#1 Nashville · Top 100 USA · 2,210 Yelp reviews · monellstn.com</div>
+      </div>
+      <div class="dishes">
+        <span class="dish">Skillet Fried Chicken ★</span>
+        <span class="dish">Cheese Grits</span>
+        <span class="dish">Biscuits + Sawmill Gravy</span>
+        <span class="dish">Cinnamon Fried Apples</span>
+        <span class="dish">Pass to the left</span>
+      </div>
+    </div>
+
+    <div class="tl-entry drive">
+      <div class="tl-time">~9:30 AM</div>
+      <div class="tl-heading">Drive — Nashville → Murfreesboro <span class="pill pill-drive">~45 mi · ~45 min</span></div>
+      <div class="tl-body">
+        <p>I-24 E. Depart at ~100% from hotel overnight charge. <strong>Check Tesla app before leaving:</strong> if Buc-ee's Murfreesboro (I-24 at Joe B. Jackson Pkwy) is open by August 2026, this is your charge stop on the way home. If not, Bowling Green KY is the fallback on the return leg.</p>
+      </div>
+    </div>
+
+    <div class="tl-entry park">
+      <div class="tl-time">~10:15 AM</div>
+      <div class="tl-heading">Stones River National Battlefield — Visitor Center <span class="pill pill-nps">NPS Stamp #2</span></div>
+      <div class="tl-body">
+        <p>Far better museum than Fort Donelson's temporary setup. Wind clockwise through the exhibits: origins of the Civil War, the situation in Murfreesboro, a dedicated room for the Battle of Stones River, audio recordings of soldiers' letters, and artifacts from the battlefield. Watch the 25-minute film — it provides essential context before the driving tour. <strong>Get the cancellation stamp at the VC desk.</strong></p>
+      </div>
+      <div class="info-card navy">
+        <div class="ic-row"><span class="ic-key">Address</span>3501 Old Nashville Hwy, Murfreesboro, TN 37129</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 893-9501</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Daily 9 AM–5 PM · Closed Thanksgiving + Christmas</div>
+        <div class="ic-row"><span class="ic-key">Fee</span>Free admission</div>
+      </div>
+    </div>
+
+    <div class="tl-entry park">
+      <div class="tl-time">~11:00 AM</div>
+      <div class="tl-heading">Stones River Battlefield Loop + Hazen Brigade Monument <span class="pill pill-nps">Activity</span></div>
+      <div class="tl-body">
+        <p>The 3.1-mile loop trail is flat and easy — mowed grass paths around farm fields with replica cannons and soldier silhouettes along the route. The highlight is <strong>Stop 5: Round Forest / Hell's Half Acre</strong>, where Colonel Hazen held the only section of the Union line that didn't break on Day 1 against four consecutive Confederate waves.</p>
+        <p>The <strong>Hazen Brigade Monument</strong> is the oldest surviving Civil War monument still standing in its original battlefield location — erected just six months after the battle in 1863, it also serves as the burial site for 45+ men of Hazen's brigade. Stand here and do the math: 32.7% casualties across both armies, more than Shiloh or Antietam.</p>
+        <p>Also visit <strong>Stones River National Cemetery</strong> — 6,850 interments, 2,562 unidentified. The tradition is to leave pennies on headstones for fallen service members. AllTrails 4.6 ★ from 1,416 reviews.</p>
+      </div>
+      <div class="info-card olive">
+        <div class="ic-row"><span class="ic-key">Trail</span>Stones River Battlefield Loop · 3.1 miles · mostly flat</div>
+        <div class="ic-row"><span class="ic-key">Highlight</span>Hazen Brigade Monument — oldest intact Civil War monument in original location</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>AllTrails 4.6 ★ · 1,416 reviews</div>
+        <div class="ic-row"><span class="ic-key">Also do</span>6-stop auto tour with phone audio guide — call number at each sign</div>
+      </div>
+    </div>
+
+    <div class="tl-entry meal">
+      <div class="tl-time">~12:00 PM</div>
+      <div class="tl-heading">Lunch — Joanie's <span class="pill pill-meal">Lunch</span></div>
+      <div class="tl-body">
+        <p>~10-minute drive from the battlefield. Locally-owned scratch kitchen café. The Mile High Crepe is loaded with ham, mozzarella, and tomatoes and is the size of a dinner plate. The Joanie's Burger with blue cheese is the local rave. Crispy golden fries. Relaxed, cozy atmosphere — exactly right after a morning on the battlefield before the drive home.</p>
+      </div>
+      <div class="info-card gold">
+        <div class="ic-row"><span class="ic-key">Address</span>1733 St Andrews Dr, Murfreesboro, TN 37129</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Sun 8 AM–4 PM</div>
+        <div class="ic-row"><span class="ic-key">Rating</span>4.4 ★ Google · joe.coffee · Yelp</div>
+      </div>
+      <div class="dishes">
+        <span class="dish">Mile High Crepe ★</span>
+        <span class="dish">Joanie's Burger w/ Blue Cheese</span>
+        <span class="dish">Crispy Fries</span>
+      </div>
+    </div>
+
+    <div class="tl-entry fun">
+      <div class="tl-time">~1:00–1:45 PM</div>
+      <div class="tl-heading">🗿 World's Largest Cedar Bucket — Cannonsburgh Village <span class="pill pill-fun">World's Largest</span></div>
+      <div class="tl-body">
+        <p>312 S Front St — a 5-minute drive from Joanie's, perfectly timed as Cannonsburgh opens at 1 PM on Sunday. Free admission. The bucket is 6 feet tall, 9 feet wide at the top, capable of holding 1,556 gallons. Built in 1887 as a promotional tool, it won blue ribbons at the 1893 Chicago World's Fair and the 1904 St. Louis World's Fair, where a beer company filled it with 1,566 gallons of beer and built a catwalk around the top for sampling. The pioneer village itself is worth 30 minutes: working gristmill, one-room schoolhouse, blacksmith shop, caboose, and wedding chapel — a genuine slice of rural Tennessee from the 1830s–1930s.</p>
+      </div>
+      <div class="info-card">
+        <div class="ic-row"><span class="ic-key">Address</span>312 S Front St, Murfreesboro, TN 37130</div>
+        <div class="ic-row"><span class="ic-key">Phone</span>(615) 890-0355 — call to confirm Sunday hours before visiting</div>
+        <div class="ic-row"><span class="ic-key">Hours</span>Sun 1:00–4:00 PM (April–October per murfreesborotn.gov)</div>
+        <div class="ic-row"><span class="ic-key">Fee</span>Free</div>
+      </div>
+      <div class="warn"><span class="warn-i">⚠️</span>Conflicting hours exist in online sources. The official city website and TripAdvisor confirm Sunday 1–4 PM in summer. Call ahead: (615) 890-0355.</div>
+    </div>
+
+    <div class="tl-entry drive">
+      <div class="tl-time">~2:00 PM</div>
+      <div class="tl-heading">Drive Home — Murfreesboro → Kirkwood <span class="pill pill-drive">~310 mi · ~4.5 hrs</span></div>
+      <div class="tl-body">
+        <p>I-24 W → US-60 W → I-44 W. Depart at ~85–90% battery.</p>
+        <p><strong>Charging:</strong> Check Tesla app — if Buc-ee's Murfreesboro (I-24/Joe B. Jackson Pkwy) is open, charge to 85% here before leaving town. If not, charge at <strong>Bowling Green, KY Supercharger (~175 miles into the return)</strong> — same stop as the outbound trip. Arrive Bowling Green ~40–45%. Charge to 85%, complete the ~135-mile drive to Kirkwood.</p>
+      </div>
+      <div class="info-card green">
+        <div class="ic-row"><span class="ic-key">Option A</span>Buc-ee's Murfreesboro (if open by Aug 2026) — verify on Tesla app</div>
+        <div class="ic-row"><span class="ic-key">Option B</span>Bowling Green, KY Supercharger — 3200 Scottsville Rd (fallback)</div>
+        <div class="ic-row"><span class="ic-key">Arrive</span>~40–45% · Charge to 85% · ~20–25 min</div>
+      </div>
+    </div>
+
+    <div class="tl-entry">
+      <div class="tl-time">~6:30–7:00 PM</div>
+      <div class="tl-heading">Arrive Home — Kirkwood, MO</div>
+      <div class="tl-body"><p>2 NPS stamps collected. 0 PTO used. 1 brewery toured. 1 World's Largest bucket photographed.</p></div>
+    </div>
+
+  </div>
+</section>
+
+</div><!-- /main-wrap -->
+
+
+<!-- ══════════════════════════════════════════ -->
+<!-- FOOD REFERENCE TABLE -->
+<!-- ══════════════════════════════════════════ -->
+<div style="background:var(--cream); padding: 48px 0; border-top: 2px solid var(--parchment-dark);" id="food-ref">
+<div class="main-wrap">
+  <div class="ref-section" style="padding-top:0; border-top:none;">
+    <div class="ref-title">Food Plan</div>
+    <p class="ref-sub">5 restaurants · 0 duplicates · All rated 4.3 ★ or higher · All locally owned or regional</p>
+    <table class="ref-table">
+      <thead>
+        <tr>
+          <th>Day</th>
+          <th>Meal</th>
+          <th>Restaurant</th>
+          <th>Location</th>
+          <th>Rating</th>
+          <th>Notable</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="day-col">Fri</td>
+          <td>Late Dinner</td>
+          <td class="name-col">Puckett's Downtown</td>
+          <td>500 Church St, Nashville</td>
+          <td class="rating">4.3 ★</td>
+          <td>Cherry wood-smoked BBQ, live music, open until 11 PM Fri</td>
+        </tr>
+        <tr>
+          <td class="day-col">Sat</td>
+          <td>Breakfast</td>
+          <td class="name-col">Biscuit Love (Gulch)</td>
+          <td>316 11th Ave S, Nashville</td>
+          <td class="rating">4.4 ★</td>
+          <td>Bonuts, East Nasty, OAD Cheap Eats #382 · 7 AM open</td>
+        </tr>
+        <tr>
+          <td class="day-col">Sat</td>
+          <td>Lunch</td>
+          <td class="name-col">Midway Pizza</td>
+          <td>961 Hwy 79, Dover TN</td>
+          <td class="rating">4.7–5.0 ★</td>
+          <td>Carry-out only · jalapeño popper pizza · Navy veteran-owned · call ahead</td>
+        </tr>
+        <tr>
+          <td class="day-col">Sat</td>
+          <td>Dinner</td>
+          <td class="name-col">Prince's Hot Chicken</td>
+          <td>Assembly Food Hall, Nashville</td>
+          <td class="rating">4.3 ★</td>
+          <td>100-year-old originator of Nashville hot chicken · start at Mild</td>
+        </tr>
+        <tr>
+          <td class="day-col">Sun</td>
+          <td>Breakfast</td>
+          <td class="name-col">Monell's (Germantown)</td>
+          <td>1235 6th Ave N, Nashville</td>
+          <td class="rating">#1 Nashville</td>
+          <td>Family-style communal · fried chicken at breakfast · no reservations · arrive 8 AM</td>
+        </tr>
+        <tr>
+          <td class="day-col">Sun</td>
+          <td>Lunch</td>
+          <td class="name-col">Joanie's</td>
+          <td>1733 St Andrews Dr, Murfreesboro</td>
+          <td class="rating">4.4 ★</td>
+          <td>Mile High Crepe, blue cheese burger · open Sun 8 AM–4 PM</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!-- EV CHARGING -->
+<!-- ══════════════════════════════════════════ -->
+<div class="ev-section" id="ev-ref">
+  <div class="ev-title">⚡ EV Charging Plan</div>
+  <p class="ev-sub">Tesla Model 3 LR · Depart Kirkwood 100% both directions · 2 charge stops round trip</p>
+  <div class="ev-grid" style="max-width:860px; margin:0 auto;">
+    <div class="ev-card">
+      <div class="ev-card-title">Fri Outbound — Mile 85</div>
+      <p><strong>Buc-ee's Springfield, MO</strong><br>3284 N Beaver Rd<br>Snack stop only — do NOT charge here. 16 V4 Superchargers available but too early in the trip. Save the stop for snacks and bathrooms.</p>
+    </div>
+    <div class="ev-card">
+      <div class="ev-card-title">Fri Outbound — Mile 175 ⚡ Required</div>
+      <p><strong>Bowling Green, KY Supercharger</strong><br>3200 Scottsville Rd<br>Arrive ~40–45% → charge to ~85% → ~20–25 min. Source: PlugShare. Verify before departure.</p>
+    </div>
+    <div class="ev-card">
+      <div class="ev-card-title">Hotel Overnight</div>
+      <p><strong>Hilton Nashville Downtown</strong><br>2 Tesla connectors + 2 J1772 on-site. Only 4 ports total — <strong>call ahead to reserve:</strong> (615) 620-1000. Wakes up at 100% both Saturday and Sunday.</p>
+    </div>
+    <div class="ev-card">
+      <div class="ev-card-title">Sun Return — Option A</div>
+      <p><strong>Buc-ee's Murfreesboro (if open)</strong><br>I-24 at Joe B. Jackson Pkwy<br>Broke ground Oct 2024. Projected summer 2026. Verify on Tesla app before trip. 20-stall Supercharger permitted.</p>
+    </div>
+    <div class="ev-card">
+      <div class="ev-card-title">Sun Return — Option B (Fallback) ⚡</div>
+      <p><strong>Bowling Green, KY Supercharger</strong><br>3200 Scottsville Rd (same stop as outbound)<br>Arrive ~40–45% → charge to ~85% → completes drive home to Kirkwood.</p>
+    </div>
+    <div class="ev-card">
+      <div class="ev-card-title">Battery State Summary</div>
+      <p>Depart 100% → Springfield 85% → Bowling Green 40% → charge to 85% → Nashville 80%. Hotel overnight 100%. Dover loop no charge needed. Return mirrors outbound.</p>
+    </div>
+  </div>
+</div>
+
+
+<!-- ══════════════════════════════════════════ -->
+<!-- PRE-TRIP CHECKLIST -->
+<!-- ══════════════════════════════════════════ -->
+<div class="checklist-section" id="checklist">
+  <div class="checklist-title">Pre-Trip Checklist</div>
+  <p class="checklist-sub">Everything that requires action before August 14, 2026</p>
+  <div class="checklist-grid">
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Book Hilton Nashville DT</strong> — verify Aug 14–16 availability; downtown Nashville weekends book up. (615) 620-1000 or hilton.com</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Call Hilton re: EV charging</strong> — confirm on-site Tesla charger operational and reserve a spot. (615) 620-1000</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Book Fat Bottom Brewing Tour</strong> — Saturday 4 PM slot at shop.fatbottombrewing.com. Tours sell out — book well ahead.</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Call Cannonsburgh Village</strong> — confirm Sunday hours before visiting. (615) 890-0355. Official city site says 1–4 PM but verify.</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Watch Fort Donelson film</strong> — 17-min park film before Saturday. nps.gov/fodo/planyourvisit/things2do.htm. Also watch Dover Hotel film.</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Check Tesla app</strong> — 1 week before trip, verify Buc-ee's Murfreesboro Supercharger open status. If open, use on Sunday return.</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Verify Bowling Green Supercharger</strong> — check PlugShare before departure both directions. 3200 Scottsville Rd, Bowling Green, KY.</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Call Midway Pizza</strong> — 30 min before Saturday arrival to order carry-out. (931) 472-9092. Jalapeño popper pizza + stuffed cheesy bread.</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Arrive Monell's at 8 AM sharp</strong> — no reservations, first-come first-served on Sunday morning. Germmantown location, 1235 6th Ave N.</span>
+    </label>
+    <label class="check-item">
+      <input type="checkbox">
+      <span class="check-label"><strong>Download Francis Energy app</strong> — in case of CCS charging needs. Tap-to-pay reliability on physical machines is inconsistent.</span>
+    </label>
+  </div>
+</div>
+
+<footer>Fort Donelson &amp; Stones River · Aug 14–16, 2026 · 2 Stamps · 0 PTO · Kirkwood, MO</footer>
+
+</body>
+</html>
